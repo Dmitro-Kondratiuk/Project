@@ -60,12 +60,11 @@
                             <div class="row">
                                 <?php if(!empty($data)):?>
                                 <?php  foreach ($data as $product): ?>
-                            <?php  $img = $product->getImage()?>
                                     <div class="col-xl-4 col-lg-6 col-md-6">
                                         <div class="product-wrapper mb-50">
                                             <div class="product-img mb-25">
                                                 <a href="<?= \yii\helpers\Url::to(['product/view','id'=>$product->id]) ?>">
-                                                    <?= \yii\helpers\Html::img($img->getUrl(),['alt'=>$product->name]) ?>
+                                                 <?=\yii\helpers\Html::img("@web/upload/product/logo_product/{$product->image}") ?>
                                                 </a>
                                                 <div class="sale-tag">
                                                     <?php  if($product->new): ?>
@@ -118,7 +117,6 @@
                         </div>
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             <?php foreach($data as $item) : ?>
-                            <?php $img = $item->getImage() ?>
                             <div class="row">
                                 <div class="col-xl-4">
                                     <div class="product-wrapper mb-30">
@@ -132,7 +130,7 @@
                                         </div>
                                         <div class="product-img">
                                             <a href="<?= \yii\helpers\Url::to(['product/view','id'=>$item->id])?>">
-                                                <?= \yii\helpers\Html::img($img->getUrl()) ?>
+                                                <?= \yii\helpers\Html::img("@web/upload/product/logo_product/{$item->image}") ?>
                                             </a>
                                         </div>
                                     </div>

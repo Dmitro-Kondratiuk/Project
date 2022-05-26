@@ -20,7 +20,7 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        //"css/bootstrap.min.css",
+        "css/bootstrap.min.css",
         "css/owl.carousel.min.css",
         "css/animate.min.css",
         "css/magnific-popup.css",
@@ -30,6 +30,7 @@ class AppAsset extends AssetBundle
         "css/meanmenu.css",
         "css/slick.css",
         "css/default.css",
+        "css/site.css",
         "css/style.css",
         "css/responsive.css",
     ];
@@ -52,6 +53,8 @@ class AppAsset extends AssetBundle
         "js/main.js",
         "js/jquery.cookie.js",
         "js/jquery.accordion.js",
+
+
     ];
     public $depends = [
         'yii\web\YiiAsset',

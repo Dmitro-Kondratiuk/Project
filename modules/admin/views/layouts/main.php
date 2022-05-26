@@ -35,6 +35,7 @@ if (Yii::$app->controller->action->id === 'login') {
         <?= Html::csrfMetaTags() ?>
         <title>Adminka<?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
+
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
     <?php $this->beginBody() ?>
@@ -57,8 +58,11 @@ if (Yii::$app->controller->action->id === 'login') {
         ) ?>
 
     </div>
-
     <?php $this->endBody() ?>
+    <script type="text/javascript" src="https://www.google-analytics.com/analytics.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://demos.krajee.com/assets/90f8a8a0/js/fileinput.min.js"></script>
+    <script type="text/javascript" src="https://demos.krajee.com/assets/a22547b9/js/bootstrap-datetimepicker.min.js"></script>
     </body>
     </html>
     <?php $this->endPage() ?>

@@ -30,9 +30,6 @@
             </div>
         </div>
     </section>
-    <?php $work = $products->getImage() ;
-          $gal = $products->getImages();
-    ?>
     <!-- breadcrumb-area-end -->
     <!-- shop-area start -->
     <section class="shop-details-area pt-100 pb-100">
@@ -43,7 +40,7 @@
                         <div class="tab-content" id="myTabContentpro">
                             <div class="tab-pane fade show active" id="home" role="tabpanel">
                                 <div class="product-large-img">
-                                    <?= \yii\helpers\Html::img($work->getUrl(),['alt'=>$products->name]) ?>
+                                    <?= \yii\helpers\Html::img("@web/upload/product/logo_product/{$products->image}",['alt'=>$products->name]) ?>
                                 </div>
                                 <div class="sale-tag">
                                     <?php  if($products->new): ?>
@@ -68,10 +65,8 @@
                     </div>
                     <div class="shop-thumb-tab mb-30">
                         <ul class="nav" id="myTab2" role="tablist">
-                            <?php  foreach ($gal as $o):?>
                             <li class="nav-item">
-                                <a class="nav-link active" id="home-tab" data-toggle="tab"  role="tab" aria-selected="true"><?=\yii\helpers\Html::img($o->getUrl('405x410')) ?></a>
-                        <?php endforeach; ?>
+                                <a class="nav-link active" id="home-tab" data-toggle="tab"  role="tab" aria-selected="true"><?=\yii\helpers\Html::img('@web/img/product/no-image.png')?></a>
                         </ul>
                     </div>
                 </div>
@@ -277,7 +272,7 @@
                     <div class="product-wrapper">
                         <div class="product-img mb-25">
                             <a href="<?= \yii\helpers\Url::to(['/product/view','id'=>$one->id]) ?>">
-                                <?= \yii\helpers\Html::img("@web/img/product/{$one->img}",['alt'=>$one->name]) ?>
+                                <?= \yii\helpers\Html::img("@web/img/Product/{$one->image}",['alt'=>$one->name]) ?>
 <!--                                <img class="secondary-img" src="/img/products/pro5.jpg" alt="">-->
                             </a>
                             <div class="product-action text-center">

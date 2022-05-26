@@ -48,9 +48,9 @@ class CategoryController extends AppController
         return $this->render('contact');
     }
     public function actionProduct(){
-        $data = Product::find()->with('category')->all();
+        $data = Product::find()->all();
         $Category = Category::find()->all();
-        $this->setMeta('K.O | '.'Allproduct');
+        $this->setMeta('K.O | '.'All-product');
         $query = Product::find()->where(['category_id'=>'id']);
         $pages = new Pagination(['totalCount'=>$query->count(),'pageSize'=>5,'forcePageParam'=>false,
             'pageSizeParam'=> false]);

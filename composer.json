@@ -22,7 +22,11 @@
         "mihaildev/yii2-ckeditor": "*",
         "mihaildev/yii2-elfinder": "*",
         "costa-rico/yii2-images": "*",
-        "kartik-v/yii2-widget-fileinput": "@dev"
+        "kartik-v/yii2-widget-fileinput": "dev-master",
+        "kartik-v/yii2-widget-datepicker": "dev-master",
+        "kartik-v/yii2-widget-datetimepicker": "*",
+        "metalguardian/yii2-fotorama-widget": "^1.0"
+
 
 
     },

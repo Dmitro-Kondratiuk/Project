@@ -26,7 +26,7 @@
                 <div class="col-lg-8">
                     <article class="postbox post format-image mb-40">
                         <div class="postbox__thumb mb-35">
-                            <?=\yii\helpers\Html::img("@web/img/blog/{$post->img}",['alt'=>$post->name])?>
+                            <?=\yii\helpers\Html::img("@web/upload/blog/{$post->image}",['alt'=>$post->name])?>
                         </div>
                         <div class="postbox__text bg-none">
                             <div class="post-meta mb-15">
@@ -64,23 +64,7 @@
                                 <div class="col-12">
                                     <div class="navigation-border pt-50 mt-40"></div>
                                 </div>
-                                <div class="col-xl-5 col-lg-5 col-md-5">
-                                    <div class="bakix-navigation b-next-post text-left mb-30">
-                                        <span><a href="#">Prev Post</a></span>
-                                        <h4><a href="#">Tips on Minimalist</a></h4>
-                                    </div>
-                                </div>
-                                <div class="col-xl-2 col-lg-2 col-md-2 ">
-                                    <div class="bakix-filter text-left text-md-center mb-30">
-                                        <a href="#"><img src="img/icon/filter.png" alt=""></a>
-                                    </div>
-                                </div>
-                                <div class="col-xl-5 col-lg-5 col-md-5">
-                                    <div class="bakix-navigation b-next-post text-left text-md-right  mb-30">
-                                        <span><a href="#">Next Post</a></span>
-                                        <h4><a href="#">Tips on Minimalist</a></h4>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                         <div class="author mt-80 mb-40">

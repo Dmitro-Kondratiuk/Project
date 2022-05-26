@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\modules\admin\models\ProductImage;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -9,6 +10,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use yii\web\UploadedFile;
 
 class SiteController extends Controller
 {
@@ -32,7 +34,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post','get'],
+                    'logout' => ['post', 'get'],
                 ],
             ],
         ];
@@ -125,4 +127,26 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+//    public function actionSaveImg()
+//    {
+//        $this->enableCsrfValidation = false;
+//        if (Yii::$app->request->isPost) {
+//            $post = Yii::$app->request->post();
+//            $dir = 'upload/' . $post['ProductImage']['class'] . '/';
+//            $file = UploadedFile::getInstanceByName('ProductImage[attachment]');
+//            $model = new ProductImage();
+//            $model->name = $file->baseName . '_' . Yii::$app->getSecurity()->generateRandomString(7) . '.' . $file->extension;
+//            $model->load($post);
+//            Yii::info('Bananna');
+//            $model->validate();
+//            if ($file->saveAs($dir . $model->name)) {
+//                $model->save();
+//            } else {
+//                echo 'Ошибка валидации';
+//            }
+////            Yii::$app->response->format = Response::FORMAT_JSON;
+//            return $file;
+//        }
+//    }
 }

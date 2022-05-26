@@ -4,6 +4,7 @@ namespace app\modules\admin\controllers;
 
 use app\modules\admin\models\Product;
 use app\modules\admin\controllers\ProductSearch;
+use app\modules\admin\models\ProductImage;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -96,13 +97,6 @@ class ProductController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-//            $model->image = UploadedFile::getInstance($model, 'image');
-//            if($model->image){
-//                $model->upload();
-//            }
-//            unset($model->image);
-//            $model->gallery = UploadedFile::getInstances($model, 'gallery');
-//            $model->uploadGallery();
             Yii::$app->session->setFlash('success',"Продукт {$model->name} был обновлен");
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -139,5 +133,34 @@ class ProductController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    public function actionSaveImg()
+    {
+        $this->enableCsrfValidation = false;
+        if (Yii::$app->request->isPost) {
+            $post = Yii::$app->request->post();
+            $dir = 'upload/' . $post['ProductImage']['class'] . '/';
+            $file = UploadedFile::getInstanceByName('ProductImage[attachment]');
+            $model = new ProductImage();
+            $model->name = $file->baseName . '_' . Yii::$app->getSecurity()->generateRandomString(7) . '.' . $file->extension;
+            $model->load($post);
+            Yii::info('Bananna');
+            $model->validate();
+            if ($file->saveAs($dir . $model->name)) {
+                $model->save();
+            } else {
+                echo 'Ошибка валидации';
+            }
+//            Yii::$app->response->format = Response::FORMAT_JSON;
+            return $file;
+        }
+    }
+    public function  actionDelImg(){
+        if($model = ProductImage::findOne(Yii::$app->request->post('key')) and $model->delete() ){
+            return true;
+        }else{
+            throw new  NotFoundHttpException('что-то не удаляеться, возможно кто-то уже удалил этот файл :(');
+        }
+
     }
 }

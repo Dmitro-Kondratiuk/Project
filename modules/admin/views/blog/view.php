@@ -13,8 +13,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="blog-view">
 
-
-
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
@@ -36,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'keywords:ntext',
             'description:ntext',
             'small_content:ntext',
-            'img',
+            'image',
         ],
     ]) ?>
 

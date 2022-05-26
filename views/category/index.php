@@ -81,12 +81,11 @@ use yii\helpers\Url;
                                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                       <div class="product-slider owl-carousel">
                                           <?php foreach ($news as $new): ?>
-                                          <?php $o= $new->getImage() ?>
                                       <div class="pro-item">
                                                 <div class="product-wrapper mb-50">
                                                     <div class="product-img mb-25">
                                                         <a href="<?= Url::to(['product/view','id'=>$new->id])?>">
-                                                            <?= \yii\helpers\Html::img( $o->getUrl()) ?>
+                                                          <?= \yii\helpers\Html::img('@web/upload/product/logo_product/'.$new->image) ?>
                                                         </a>
                                                         <div class="product-action text-center">
                                                             <a href="#" title="Shoppingb Cart">

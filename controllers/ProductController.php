@@ -4,8 +4,10 @@
 namespace app\controllers;
 use app\models\Coment;
 use app\models\Product;
+use app\modules\admin\models\ProductImage;
 use Yii;
 use app\models\Category;
+use yii\web\UploadedFile;
 
 class ProductController extends  AppController
 {
@@ -32,7 +34,8 @@ class ProductController extends  AppController
 
     }
     public function actionIndex(){
-        $data = Product::find()->with('category')->all();
+        $data = Product::find()->all();
         return $this->render('index',compact('data'));
     }
+
 }

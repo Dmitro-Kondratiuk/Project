@@ -26,7 +26,7 @@
                     <article class="postbox post format-image mb-40">
                         <div class="postbox__thumb">
                             <a href="<?= \yii\helpers\Url::to(['/blog/view','id'=>$one->id])?>">
-                                <?=\yii\helpers\Html::img("@web/img/product/{$one->img}",['alt'=>$one->name])?>
+                                <?=\yii\helpers\Html::img("@web/upload/blog/{$one->image}",['alt'=>$one->name])?>
                             </a>
                         </div>
                         <div class="postbox__text p-30">

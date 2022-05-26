@@ -80,12 +80,27 @@ $this->params['breadcrumbs'][] = $this->title;
 
             ],
             'count',
-//            [
-//                    'attribute'=>'image',
-//                    'value'=>"<img src='{$img->getUrl('250x150')}'>",
-//                    'format'=>'html'
-//            ]
         ],
     ]) ?>
+    <?php
+    \metalguardian\fotorama\Fotorama::setDefaults(
+        [
+            'nav' => 'thumbs',
+            'spinner' => [
+                'lines' => 20,
+            ],
+            'loop' => true,
+            'hash' => true,
+        ]
+    );
+    foreach ($model->productImg as $item){
+        echo Html::img('@web/upload/Product/'.$item->name);
+    }
+    ?>
+<!-- foreach ($model->productImg as $item){-->
+<!--    echo Html::img('@web/upload/Product/'.$item->name);-->
+<!--}-->
+
+
 
 </div>

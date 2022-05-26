@@ -47,11 +47,10 @@ use mihaildev\elfinder\ElFinder;
 <!--    --><?//= $form->field($model, 'image')->FileInput() ?>
     <?= $form->field($model, 'gallery[]')->fileInput(['multiple' => true, 'accept' => 'image/*']) ?>
 
-    <?=  $form->field($model, 'file')->widget(\kartik\file\FileInput::classname(), [
-
+    <?=  $form->field($model, 'file')->widget(\kartik\file\FileInput::class, [
+        'options' => ['accept' => 'image/*'],
     ]);
     ?>
-
 
     <?= $form->field($model, 'hit')->CheckBox([ '0', '1', ]) ?>
 
@@ -60,11 +59,30 @@ use mihaildev\elfinder\ElFinder;
     <?= $form->field($model, 'sale')->CheckBox([ '0', '1', ]) ?>
 
     <?= $form->field($model, 'count')->textInput() ?>
-
+<?php //debug($model->imageLinksDate) ?>
+  <?=\kartik\file\FileInput::widget([
+    'name' => 'ProductImage[attachment]',
+    'options'=>[
+        'multiple'=>true
+    ],
+    'pluginOptions' => [
+            'deleteUrl'=>\yii\helpers\Url::to(['product/del-img']),
+            'initialPreview' =>$model->imageLinks,
+            'initialPreviewAsData'=>true,
+            'initialPreviewConfig'=>$model->imageLinksDate,
+            'overwriteInitial'=>false,
+            'uploadUrl' => \yii\helpers\Url::to(['product/save-img']),
+            'uploadExtraData' => [
+                'ProductImage[class]' => $model->formName(),
+                'ProductImage[product_id]' => $model->id,
+            ],
+            'maxFileCount' => 10
+    ]]);?>
+    <br>
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
-
     <?php ActiveForm::end(); ?>
+<?php //debug($model->productImg) ?>
 
 </div>
