@@ -1,9 +1,5 @@
 
-<?php
-
-?>
 <main>
-
     <!-- breadcrumb-area-start -->
     <section class="breadcrumb-area" data-background="/img/bg/page-title.png">
         <div class="container">
@@ -21,7 +17,7 @@
         </div>
     </section>
     <!-- breadcrumb-area-end -->
-
+    <?php debug($category) ?>
     <!-- shop-area start -->
     <section class="shop-area pt-100 pb-100">
         <div class="container">
@@ -36,7 +32,7 @@
                     <div class="row mb-10">
                         <div class="col-xl-5 col-lg-6 col-md-6">
                             <div class="product-showing mb-40">
-                                <p>Showing 1–22 of 32 results</p>
+                                <p> <?= count($products)?> results</p>
                             </div>
                         </div>
                         <div class="col-xl-7 col-lg-6 col-md-6">
@@ -74,7 +70,7 @@
                                     <div class="product-wrapper mb-50">
                                         <div class="product-img mb-25">
                                             <a href="<?= \yii\helpers\Url::to(['product/view','id'=>$product->id]) ?>">
-                                                <?= \yii\helpers\Html::img("@web/img/product/{$product->img}",['alt'=>$product->name]) ?>
+                                                <?= \yii\helpers\Html::img("@web/upload/product/logo_product/{$product->image}",['alt'=>$product->name]) ?>
                                             </a>
                                             <div class="sale-tag">
                                                 <?php  if($product->new): ?>
@@ -142,7 +138,7 @@
                                             </div>
                                             <div class="product-img">
                                                 <a href="<?= \yii\helpers\Url::to(['product/view','id'=>$item->id])?>">
-                                                    <?= \yii\helpers\Html::img("@web/img/product/{$item->img}",['alt'=>$item->name]) ?>
+                                                    <?= \yii\helpers\Html::img("@web/upload/product/logo_product/{$item->image}",['alt'=>$item->name]) ?>
                                                 </a>
                                             </div>
                                         </div>

@@ -21,7 +21,7 @@
     <section class="blog-area pt-100 pb-60">
         <div class="container">
             <div class="row">
-                <?php foreach($blog as $one): ?>
+                <?php foreach($blogs as $one): ?>
                 <div class="col-lg-4 col-md-6">
                     <article class="postbox post format-image mb-40">
                         <div class="postbox__thumb">
@@ -52,12 +52,11 @@
                 <div class="col-12">
                     <div class="basic-pagination basic-pagination-2 text-center mb-40">
                         <ul>
-                            <li><a href="#"><i class="fas fa-angle-double-left"></i></a></li>
-                            <li><a href="#">01</a></li>
-                            <li class="active"><a href="#">02</a></li>
-                            <li><a href="#">03</a></li>
-                            <li><a href="#"><i class="fas fa-ellipsis-h"></i></a></li>
-                            <li><a href="#"><i class="fas fa-angle-double-right"></i></a></li>
+                            <?php
+                            echo \yii\widgets\LinkPager::widget([
+                                'pagination' => $pages,
+                            ]);
+                            ?>
                         </ul>
                     </div>
                 </div>

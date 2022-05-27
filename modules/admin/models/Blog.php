@@ -55,8 +55,8 @@ class Blog extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'content', 'created_at','small_content'], 'required'],
-            [['content', 'keywords', 'description', 'small_content'], 'string'],
+            [['name', 'content','small_content'], 'required'],
+            [['content', 'keywords', 'description', 'small_content','username'], 'string'],
             [['created_at'], 'safe'],
             [['name', 'image'], 'string', 'max' => 255],
             [['file'], 'image']

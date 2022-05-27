@@ -28,14 +28,7 @@ class Product extends \yii\db\ActiveRecord
 {
     public $file;
     public $gallery;
-//    public function behaviors()
-//    {
-//        return [
-//            'image' => [
-//                'class' => 'rico\yii2images\behaviors\ImageBehave',
-//            ]
-//        ];
-//    }
+
 
     /**
      * {@inheritdoc}
@@ -83,7 +76,7 @@ class Product extends \yii\db\ActiveRecord
             'description' => 'Описание',
             'image' => 'Картинка',
             'galery' => 'Галерея',
-            'file' => 'КартинкаЩЩ',
+            'file' => 'Картинка(Главная)',
             'hit' => 'Хит',
             'new' => 'Новинка',
             'sale' => 'Распродажа',

@@ -58,12 +58,12 @@
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                             <div class="row">
-                                <?php if(!empty($data)):?>
-                                <?php  foreach ($data as $product): ?>
+                                <?php if(!empty($products)):?>
+                                <?php  foreach ($products as $product): ?>
                                     <div class="col-xl-4 col-lg-6 col-md-6">
                                         <div class="product-wrapper mb-50">
                                             <div class="product-img mb-25">
-                                                <a href="<?= \yii\helpers\Url::to(['product/view','id'=>$product->id]) ?>">
+                                                <a href="<?= \yii\helpers\Url::to(['product/view','id'=>$product->id])?>">
                                                  <?=\yii\helpers\Html::img("@web/upload/product/logo_product/{$product->image}") ?>
                                                 </a>
                                                 <div class="sale-tag">
@@ -75,7 +75,7 @@
                                                     <?php endif; ?>
                                                 </div>
                                                 <div class="product-action text-center">
-                                                    <a href="<?= \yii\helpers\Url::to(['/cart/add','id'=>$product->id])?>" title="Shoppingb Cart" data-id="<?=$product->id?>">
+                                                    <a href="<?= \yii\helpers\Url::to(['/cart/add/','id'=>$product->id])?>" title="Shoppingb Cart" data-id="<?=$product->id?>">
                                                         <i class="flaticon-shopping-cart"></i>
                                                     </a>
                                                     <a href="<?= \yii\helpers\Url::to(['product/view','id'=>$product->id]) ?>" title="Quick View">
@@ -91,7 +91,7 @@
                                                     <a href="shop.html">furniture</a>
                                                 </div>
                                                 <h4>
-                                                    <a href="<?= \yii\helpers\Url::to(['product/view','id'=>$product->id]) ?>"><?= $product->name ?></a>
+                                                    <a href="<?= \yii\helpers\Url::to(['product/view/','id'=>$product->id]) ?>"><?= $product->name ?></a>
                                                 </h4>
                                                 <div class="product-meta">
                                                     <div class="pro-price">
@@ -116,7 +116,7 @@
 
                         </div>
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <?php foreach($data as $item) : ?>
+                            <?php foreach($products as $item) : ?>
                             <div class="row">
                                 <div class="col-xl-4">
                                     <div class="product-wrapper mb-30">

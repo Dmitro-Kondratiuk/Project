@@ -11,7 +11,7 @@ use yii\data\Pagination;
 class CategoryController extends AppController
 {
     public function actionIndex(){
-        $hits = Product::find()->where(['hit'=>'1'])->limit(3)->all();
+        $hits = Product::find()->where(['hit'=>'1'])->all();
         $this->setMeta('K.O');
         $news = Product::find()->where(['new'=>'1'])->all();
         return $this->render('index',compact('hits','news'));
@@ -26,7 +26,7 @@ class CategoryController extends AppController
         }
        // $products = Product::find()->where(['category_id'=>$id])->all();
         $query = Product::find()->where(['category_id'=>$id]);
-        $pages = new Pagination(['totalCount'=>$query->count(),'pageSize'=>10,'forcePageParam'=>false,
+        $pages = new Pagination(['totalCount'=>$query->count(),'pageSize'=>3,'forcePageParam'=>false,
             'pageSizeParam'=> false]);
         $products = $query->offset($pages->offset)->limit($pages->limit)->all();
         $cat = Category::findAll($id);
@@ -51,9 +51,10 @@ class CategoryController extends AppController
         $data = Product::find()->all();
         $Category = Category::find()->all();
         $this->setMeta('K.O | '.'All-product');
-        $query = Product::find()->where(['category_id'=>'id']);
-        $pages = new Pagination(['totalCount'=>$query->count(),'pageSize'=>5,'forcePageParam'=>false,
+        $query = Product::find()->select(['name','image','price','old_price','id']);
+        $pages = new Pagination(['totalCount'=>$query->count(),'pageSize'=>6,'forcePageParam'=>false,
             'pageSizeParam'=> false]);
-        return $this->render('product',compact('data','pages','Category'));
+        $products = $query->offset($pages->offset)->limit($pages->limit)->all();
+        return $this->render('product',compact('data','pages','Category','products'));
     }
 }

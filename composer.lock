@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a9db54431767b62980cd28bba97d47c0",
+    "content-hash": "1286aeabca6eadf4f592349a944cddfb",
     "packages": [
         {
             "name": "abeautifulsite/simpleimage",
@@ -206,6 +206,30 @@
             "type": "bower-asset",
             "license": [
                 "MIT"
+            ]
+        },
+        {
+            "name": "bower-asset/jquery.countdown",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:hilios/jQuery.countdown.git",
+                "reference": "f4dd04b02be1e0504c03d886efe8a94de7f2da6b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hilios/jQuery.countdown/zipball/f4dd04b02be1e0504c03d886efe8a94de7f2da6b",
+                "reference": "f4dd04b02be1e0504c03d886efe8a94de7f2da6b"
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.7"
+            },
+            "type": "bower-asset",
+            "license": [
+                {
+                    "type": "MIT",
+                    "url": "https://github.com/hilios/jQuery.countdown/blob/2.0.4/LICENSE.md"
+                }
             ]
         },
         {
@@ -1313,6 +1337,47 @@
                 "source": "https://github.com/rmrevin/yii2-fontawesome"
             },
             "time": "2017-01-11T14:05:47+00:00"
+        },
+        {
+            "name": "russ666/yii2-countdown",
+            "version": "0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/russ666/yii2-countdown.git",
+                "reference": "0438d14870b9a7f58b523a0ad0cb5aab40f20e49"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/russ666/yii2-countdown/zipball/0438d14870b9a7f58b523a0ad0cb5aab40f20e49",
+                "reference": "0438d14870b9a7f58b523a0ad0cb5aab40f20e49",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery.countdown": "*",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "russ666\\widgets\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "jQuery countdown widget for Yii2",
+            "keywords": [
+                "countdown",
+                "jquery",
+                "widget",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/russ666/yii2-countdown/issues",
+                "source": "https://github.com/russ666/yii2-countdown"
+            },
+            "time": "2017-05-31T14:46:43+00:00"
         },
         {
             "name": "studio-42/elfinder",

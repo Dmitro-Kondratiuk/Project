@@ -30,7 +30,8 @@ class ProductController extends  AppController
             }
         }
         $infa = Coment::find()->where(['product_id'=>$id])->all();
-        return $this->render('view',compact('products','sale','category','infa','content'));
+        $galery = \app\modules\admin\models\Product::find()->with('productImg')->where(['id'=>$id])->one();
+        return $this->render('view',compact('products','sale','category','infa','content','galery'));
 
     }
     public function actionIndex(){

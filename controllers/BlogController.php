@@ -5,13 +5,19 @@ use Yii;
 use app\models\User;
 use app\models\Blog;
 use app\models\BlogComent;
+use yii\data\Pagination;
 
 class BlogController extends  AppController
 {
     public function  actionIndex(){
         $blog = Blog::find()->all();
         $this->setMeta('K.O | '.'Blog');
-        return $this->render('index',compact('blog'));
+        $query = Blog::find()->select(['username','image','created_at','id']);
+        $pages = new Pagination(['totalCount'=>$query->count(),'pageSize'=>5,'forcePageParam'=>false,
+            'pageSizeParam'=> false]);
+        $blogs = $query->offset($pages->offset)->limit($pages->limit)->all();
+        return $this->render('index',compact('blog','blogs','pages'));
+
     }
     public function actionAbout(){
         $this->setMeta('K.O | '.'About');

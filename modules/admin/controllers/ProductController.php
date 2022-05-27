@@ -144,7 +144,6 @@ class ProductController extends Controller
             $model = new ProductImage();
             $model->name = $file->baseName . '_' . Yii::$app->getSecurity()->generateRandomString(7) . '.' . $file->extension;
             $model->load($post);
-            Yii::info('Bananna');
             $model->validate();
             if ($file->saveAs($dir . $model->name)) {
                 $model->save();

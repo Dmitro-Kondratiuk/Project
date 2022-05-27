@@ -2,6 +2,7 @@
 use yii\widgets\ActiveForm;
 ?>
 <main>
+
     <!-- breadcrumb-area-start -->
     <section class="breadcrumb-area" data-background="img/bg/page-title.png">
         <div class="container">
@@ -59,7 +60,7 @@ use yii\widgets\ActiveForm;
                                 <tbody>
                                 <?php foreach ($session['cart'] as $id=>$one):?>
                                 <tr>
-                                    <td class="product-thumbnail"><?= \yii\helpers\Html::img($one['img'])?></td>
+                                    <td class="product-thumbnail"><?= \yii\helpers\Html::img("@web/upload/product/logo_product/{$one['image']}",['height'=>100,'width'=>150])?></td>
                                     <td class="product-name"><a href="<?= \yii\helpers\Url::to(['product/view','id'=>$id])?>"><?= $one['name']?></a></td>
                                     <td class="product-price"><span class="amount"><?= $one['price']?>$</span></td>
                                     <td class="product-quantity">

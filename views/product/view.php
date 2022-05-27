@@ -65,9 +65,13 @@
                     </div>
                     <div class="shop-thumb-tab mb-30">
                         <ul class="nav" id="myTab2" role="tablist">
+                            <?php foreach ($galery->productImg as $it): ?>
                             <li class="nav-item">
-                                <a class="nav-link active" id="home-tab" data-toggle="tab"  role="tab" aria-selected="true"><?=\yii\helpers\Html::img('@web/img/product/no-image.png')?></a>
+                                <a class="nav-link active" id="home-tab" data-toggle="tab"  role="tab" aria-selected="true"><?= \yii\helpers\Html::img("@web/upload/product/".$it->name)?></a>
+                            </li>
+                            <?php endforeach; ?>
                         </ul>
+
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-8">
@@ -272,7 +276,7 @@
                     <div class="product-wrapper">
                         <div class="product-img mb-25">
                             <a href="<?= \yii\helpers\Url::to(['/product/view','id'=>$one->id]) ?>">
-                                <?= \yii\helpers\Html::img("@web/img/Product/{$one->image}",['alt'=>$one->name]) ?>
+                                <?= \yii\helpers\Html::img("@web/img/products/{$one->image}",['alt'=>$one->name]) ?>
 <!--                                <img class="secondary-img" src="/img/products/pro5.jpg" alt="">-->
                             </a>
                             <div class="product-action text-center">

@@ -11,16 +11,23 @@ use kartik\file\FileInput;
 ?>
 
 <div class="blog-form">
-<?= getcwd()?>
+<?//= getcwd()?>
     <?php $form = ActiveForm::begin(); ?>
-
+    <?= $form->field($model, 'username')->textInput() ?>
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
     <?=
     $form->field($model, 'content')->widget(CKEditor::className(), [
         'editorOptions' => ElFinder::ckeditorOptions('elfinder'),
     ]);
     ?>
-
+    <?= $form->field($model, 'created_at')->widget(DateTimePicker::class, [
+        'name' => 'dp_4',
+        'type' => DateTimePicker::TYPE_INLINE,
+        'value' => 'Tue, 23-Feb-1982, 14:45',
+        'pluginOptions' => [
+            'format' => 'Ymd'
+        ]
+    ]);?>
     <?= $form->field($model, 'keywords')->textInput() ?>
 
     <?= $form->field($model, 'description')->textInput() ?>
@@ -30,8 +37,6 @@ use kartik\file\FileInput;
             'inline' => false, //по умолчанию false
         ],
     ])?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
 
     <?=  $form->field($model, 'file')->widget(FileInput::className(), ['pluginOptions' => [
         'showCaption' => false,

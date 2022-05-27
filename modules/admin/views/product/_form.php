@@ -44,11 +44,16 @@ use mihaildev\elfinder\ElFinder;
 
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
 
-<!--    --><?//= $form->field($model, 'image')->FileInput() ?>
-    <?= $form->field($model, 'gallery[]')->fileInput(['multiple' => true, 'accept' => 'image/*']) ?>
-
     <?=  $form->field($model, 'file')->widget(\kartik\file\FileInput::class, [
-        'options' => ['accept' => 'image/*'],
+        'pluginOptions' => [
+            'showCaption' => false,
+            'showRemove' => false,
+            'showUpload' => false,
+            'browseClass' => 'btn btn-primary btn-block',
+            'browseIcon' => '<i class="fas fa-camera"></i> ',
+            'browseLabel' =>  'Выберите фото для загрузки'
+        ],
+        'options' => ['accept' => 'image/*']
     ]);
     ?>
 
@@ -60,6 +65,7 @@ use mihaildev\elfinder\ElFinder;
 
     <?= $form->field($model, 'count')->textInput() ?>
 <?php //debug($model->imageLinksDate) ?>
+    <div style="color: #0000aa">Галерея для просмотра</div>
   <?=\kartik\file\FileInput::widget([
     'name' => 'ProductImage[attachment]',
     'options'=>[
@@ -70,7 +76,7 @@ use mihaildev\elfinder\ElFinder;
             'initialPreview' =>$model->imageLinks,
             'initialPreviewAsData'=>true,
             'initialPreviewConfig'=>$model->imageLinksDate,
-            'overwriteInitial'=>false,
+//            'overwriteInitial'=>false,
             'uploadUrl' => \yii\helpers\Url::to(['product/save-img']),
             'uploadExtraData' => [
                 'ProductImage[class]' => $model->formName(),
