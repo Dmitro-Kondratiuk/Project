@@ -50,7 +50,7 @@ class Coment extends \yii\db\ActiveRecord
         ];
     }
 public function getProduct(){
-        return $this->hasOne(Product::className(),['product_id'=>'id']);
+        return $this->hasOne(Product::class,['product_id'=>'id']);
 }
     /**
      * {@inheritdoc}

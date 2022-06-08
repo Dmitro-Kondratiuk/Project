@@ -25,7 +25,7 @@ class SiteController extends Controller
                 'only' => ['logout'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout,index'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -128,25 +128,5 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-//    public function actionSaveImg()
-//    {
-//        $this->enableCsrfValidation = false;
-//        if (Yii::$app->request->isPost) {
-//            $post = Yii::$app->request->post();
-//            $dir = 'upload/' . $post['ProductImage']['class'] . '/';
-//            $file = UploadedFile::getInstanceByName('ProductImage[attachment]');
-//            $model = new ProductImage();
-//            $model->name = $file->baseName . '_' . Yii::$app->getSecurity()->generateRandomString(7) . '.' . $file->extension;
-//            $model->load($post);
-//            Yii::info('Bananna');
-//            $model->validate();
-//            if ($file->saveAs($dir . $model->name)) {
-//                $model->save();
-//            } else {
-//                echo 'Ошибка валидации';
-//            }
-////            Yii::$app->response->format = Response::FORMAT_JSON;
-//            return $file;
-//        }
-//    }
+
 }

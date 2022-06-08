@@ -2,9 +2,11 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\SaleImage;
 use app\modules\admin\models\Product;
 use app\modules\admin\controllers\ProductSearch;
 use app\modules\admin\models\ProductImage;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -24,6 +26,20 @@ class ProductController extends Controller
         return array_merge(
             parent::behaviors(),
             [
+//                'access' => [
+//                    'class' => AccessControl::class,
+//                    'rules' => [
+//                        [
+//                            'actions' => ['login', 'error'],
+//                            'allow' => true,
+//                        ],
+//                        [
+//                            'actions' => [''],
+//                            'allow' => true,
+//                            'roles' => ['@'],
+//                        ],
+//                    ],
+//                ],
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
@@ -128,7 +144,7 @@ class ProductController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Product::findOne(['id' => $id])) !== null) {
+        if (($model = Product::find()->with('tags')->andWhere(['id'=>$id])->one()) !== null) {
             return $model;
         }
 
@@ -161,5 +177,38 @@ class ProductController extends Controller
             throw new  NotFoundHttpException('что-то не удаляеться, возможно кто-то уже удалил этот файл :(');
         }
 
+    }
+    public function actionSaveSale(){
+        $this->enableCsrfValidation = false;
+        if (Yii::$app->request->isPost) {
+            $post = Yii::$app->request->post();
+            $dir = 'upload/sale/';
+            $file = UploadedFile::getInstanceByName('SaleImage[attachment]');
+            $model = new SaleImage();
+            $model->name = $file->baseName . '_' . Yii::$app->getSecurity()->generateRandomString(7) . '.' . $file->extension;
+            $model->load($post);
+            $model->validate();
+            if ($file->saveAs($dir . $model->name)) {
+                $model->save();
+                Yii::info($model->getErrors());
+            } else {
+                echo 'Ошибка валидации';
+            }
+            return $file;
+        }
+    }
+    public function actionRule(){
+//        $admin= Yii::$app->authManager->createRole('admin');
+//        $admin->description = 'Администратор';
+//        Yii::$app->authManager->add($admin);
+//
+//        $editor= Yii::$app->authManager->createRole('editor');
+//        $editor->description = 'редактор';
+//        Yii::$app->authManager->add($editor);
+//
+//        $ban= Yii::$app->authManager->createRole('ban');
+//        $ban->description = 'Заблокироаный пользыватель';
+//        Yii::$app->authManager->add($admin);
+        return "Я добавил все";
     }
 }

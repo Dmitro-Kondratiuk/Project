@@ -15,15 +15,6 @@ $config = [
             'layout'=>'main',
             'defaultRoute'=>'order/index',
         ],
-        'yii2images' => [
-            'class' => 'rico\yii2images\Module',
-            //be sure, that permissions ok
-            //if you cant avoid permission errors you have to create "images" folder in web root manually and set 777 permissions
-            'imagesStorePath' => 'upload/store', //path to origin images
-            'imagesCachePath' => 'upload/cache', //path to resized copies
-            'graphicsLibrary' => 'GD', //but really its better to use 'Imagick'
-            'placeHolderPath' => '@webroot/upload/store/no-image.png', // if you want to get placeholder when image not exists, string will be processed by Yii::getAlias
-        ],
     ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -31,10 +22,6 @@ $config = [
 
     ],
     'components' => [
-//        'image' => [
-//            'class' => 'yii\image\ImageDriver',
-//            'driver' => 'GD',  //GD or Imagick
-//        ],
         'assetManager' => [
             'bundles' => [
                 'kartik\form\ActiveFormAsset' => [
@@ -47,6 +34,9 @@ $config = [
             'cookieValidationKey' => '4FUy-PaC-Sh_GRTJNQyDe8yG7BPwbosf',
             'enableCsrfValidation'=>false,
         ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
@@ -58,7 +48,7 @@ $config = [
             'errorAction' => 'site/error',
         ],
         'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
+            'class' => 'yii\symfony\Mailer',
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure transport
             // for the mailer to send real emails.
@@ -83,6 +73,7 @@ $config = [
                 'category/<id:\d+>'=>'category/view',
                 'product/<id:\d+>'=>'product/view',
                 'blog/<id:\d+>'=>'blog/view',
+                'tag/<id:\d+>'=>'tag/tag',
                 'cart/<id:\d+>'=>'cart/add',
                 'search'=>'category/search'
             ],

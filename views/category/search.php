@@ -67,12 +67,11 @@
                             <div class="row">
                                 <?php if(!empty($products)):?>
                                 <?php  foreach ($products as $product): ?>
-                                <?php $img = $product->getImage() ?>
                                     <div class="col-xl-4 col-lg-6 col-md-6">
                                         <div class="product-wrapper mb-50">
                                             <div class="product-img mb-25">
                                                 <a href="<?= \yii\helpers\Url::to(['product/view','id'=>$product->id]) ?>">
-                                                    <?= \yii\helpers\Html::img($img->getUrl(),['alt'=>$product->name]) ?>
+                                                  <?=\yii\helpers\Html::img("@web/upload/product/logo_product/{$product->image}") ?>
                                                 </a>
                                                 <div class="sale-tag">
                                                     <?php  if($product->new): ?>

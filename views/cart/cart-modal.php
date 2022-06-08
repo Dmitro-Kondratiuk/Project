@@ -8,7 +8,7 @@
                 <th scope="col">Количество</th>
                 <th scope="col">Цена</th>
                 <th scope="col">На сумму</th>
-                <th scope="col"><span aria-hidden="true">&times;</span></th>
+                <th scope="col"><span class="far fa-trash-alt"></span></th>
             </tr>
             </thead>
             <tbody>
@@ -19,7 +19,7 @@
                 <td><?= $one['qty']?></td>
                 <td><?= $one['price']?> $</td>
                 <td><?= $one['price']*$one['qty']?> $</td>
-                <td><span data-id="<?=$id?>" class="text-danger del-item">X</span></td>
+                <td><span data-id="<?=$id?>" class="text-danger del-item far fa-trash-alt"></span></td>
             </tr>
             <?php endforeach; ?>
             <tr>

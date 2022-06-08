@@ -9,7 +9,6 @@ use mihaildev\elfinder\ElFinder;
 /* @var $model app\modules\admin\models\Product */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-
 <div class="product-form">
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
     <div class="form-group field-product-category_id has-success">
@@ -62,10 +61,21 @@ use mihaildev\elfinder\ElFinder;
     <?= $form->field($model, 'new')->CheckBox([ '0', '1', ]) ?>
 
     <?= $form->field($model, 'sale')->CheckBox([ '0', '1', ]) ?>
+    <?= $form->field($model, 'top_sale')->CheckBox([ '0', '1', ]) ?>
+    <?=
+    $form->field($model, 'tag_array')->widget(\kartik\select2\Select2::classname(), [
+        'data' => \yii\helpers\ArrayHelper::map(\app\models\Tag::find()->all(),'id','name'),
+        'language' => 'ru',
+        'options' => ['placeholder' => 'Выбирете Тэг','multiple' => true],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ]);
+    ?>
 
     <?= $form->field($model, 'count')->textInput() ?>
 <?php //debug($model->imageLinksDate) ?>
-    <div style="color: #0000aa">Галерея для просмотра</div>
+    <div style="color: #1414e2">Галерея для просмотра</div>
   <?=\kartik\file\FileInput::widget([
     'name' => 'ProductImage[attachment]',
     'options'=>[
@@ -73,10 +83,10 @@ use mihaildev\elfinder\ElFinder;
     ],
     'pluginOptions' => [
             'deleteUrl'=>\yii\helpers\Url::to(['product/del-img']),
-            'initialPreview' =>$model->imageLinks,
+            'initialPreview' =>$model->imgName,
             'initialPreviewAsData'=>true,
             'initialPreviewConfig'=>$model->imageLinksDate,
-//            'overwriteInitial'=>false,
+            'overwriteInitial'=>false,
             'uploadUrl' => \yii\helpers\Url::to(['product/save-img']),
             'uploadExtraData' => [
                 'ProductImage[class]' => $model->formName(),
@@ -84,6 +94,15 @@ use mihaildev\elfinder\ElFinder;
             ],
             'maxFileCount' => 10
     ]]);?>
+<div>Top Sale<div>
+    <?=\kartik\file\FileInput::widget([
+        'name' => 'SaleImage[attachment]',
+        'pluginOptions' => [
+            'uploadUrl' => \yii\helpers\Url::to(['product/save-sale']),
+            'uploadExtraData' => [
+                'SaleImage[product_id]' => $model->id,
+            ],
+        ]]);?>
     <br>
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
@@ -92,3 +111,4 @@ use mihaildev\elfinder\ElFinder;
 <?php //debug($model->productImg) ?>
 
 </div>
+<?php debug(\yii\helpers\ArrayHelper::map(\app\models\Tag::find()->all(),'id','name')); ?>

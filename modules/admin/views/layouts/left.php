@@ -62,6 +62,9 @@
                         'items' => [
                             ['label' => 'View', 'icon' => 'file-code-o', 'url' => ['/admin/product'],],
                             ['label' => 'Create', 'icon' => 'dashboard', 'url' => ['/admin/product/create'],],
+                            ['label' => 'TopSale-Image', 'icon' => 'file-code-o', 'url' => ['/admin/top'],],
+                            ['label' => 'Create_Tag', 'icon' => 'tag', 'url' => ['/admin/tag/create'],],
+                            ['label' => 'View_Tag', 'icon' => 'file-code-o', 'url' => ['/admin/tag'],],
 //                            [
 //                                'label' => 'Level One',
 //                                'icon' => 'circle-o',

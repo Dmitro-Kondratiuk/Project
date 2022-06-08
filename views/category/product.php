@@ -1,4 +1,5 @@
 <main>
+<!--    --><?php //debug($tags) ?>
     <!-- breadcrumb-area-start -->
     <section class="breadcrumb-area" data-background="/img/bg/page-title.png">
         <div class="container">
@@ -196,15 +197,9 @@
                         <div class="shop-widget">
                             <h3 class="shop-title">Tags</h3>
                             <ul class="shop-tag">
-                                <li><a href="shop.html"> Minimal</a></li>
-                                <li><a href="shop.html"> T-Shirts</a></li>
-                                <li><a href="shop.html"> Pants</a></li>
-                                <li><a href="shop.html"> Jeants</a></li>
-                                <li><a href="shop.html"> Winter</a></li>
-                                <li><a href="shop.html"> Latest</a></li>
-                                <li><a href="shop.html"> New</a></li>
-                                <li><a href="shop.html"> Sale</a></li>
-
+                                <?php foreach($tags as $tag): ?>
+                                <li><a href="<?=\yii\helpers\Url::to(['/tag/tag','id'=>$tag->id]) ?>"><?=$tag->name ?></a></li>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
 

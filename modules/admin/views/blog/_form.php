@@ -40,6 +40,7 @@ use kartik\file\FileInput;
 
     <?=  $form->field($model, 'file')->widget(FileInput::className(), ['pluginOptions' => [
         'showCaption' => false,
+        'initialPreview' =>$model->ImageLik,
         'showRemove' => false,
         'showUpload' => false,
         'browseClass' => 'btn btn-primary btn-block',

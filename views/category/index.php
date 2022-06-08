@@ -7,7 +7,7 @@ use yii\helpers\Url;
 
 ?>
 <main>
-
+<?php debug($session['cart']) ?>
     <!-- slider-area start -->
     <section class="slider-area pos-relative">
         <div class="slider-active">
@@ -75,7 +75,7 @@ use yii\helpers\Url;
                                                             <a href="shop.html">furniture</a>
                                                         </div>
                                                         <h4>
-                                                            <a href="product-details.html"><?= $new->name?></a>
+                                                            <a href="<?= Url::to(['product/view','id'=>$new->id])?>"><?= $new->name?></a>
                                                         </h4>
                                                         <div class="product-meta">
                                                             <div class="pro-price">
@@ -105,13 +105,14 @@ use yii\helpers\Url;
 
 
     <!-- upcoming-product-area start -->
-    <section class="upcoming-product-area pos-relative box-90 pt-120 pb-120" data-background="img/bg/bg.jpg">
+    <section class="upcoming-product-area pos-relative box-90 pt-120 pb-120"
+    <?= \yii\helpers\Html::img('@web/upload/sale/'.$top_sale->saleImg->name)?>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-6 offset-xl-6">
                     <div class="upcoming-product">
-                        <div class="upc-price">$500.00</div>
-                        <h1><a href="product-details.html">Lodge Flush Mount</a></h1>
+                        <div class="upc-price"><?=$top_sale->price ?>$</div>
+                        <h1><a href="<?=Url::to(['product/view','id'=>$top_sale->id])?>"><?=$top_sale->name?></a></h1>
                         <ul class="upc-pro-info fix">
                             <li class="d-flex">
                                 <i class="flaticon-layers"></i>
@@ -136,8 +137,8 @@ use yii\helpers\Url;
                             </li>
                         </ul>
                         <div class="upc-btn">
-                            <a class="btn theme-btn" href="shop.html" data-animation="fadeInLeft" data-delay=".7s">shop now</a>
-                            <a class="btn white-btn" href="shop.html" data-animation="fadeInRight" data-delay=".9s">Details</a>
+                            <a class="btn theme-btn" href="<?= Url::to(['/cart/add','id'=>$top_sale->id]) ?>" data-animation="fadeInLeft" data-id="<?= $top_sale->id?>">shop now</a>
+                            <a class="btn white-btn" href="<?=Url::to(['product/view','id'=>$top_sale->id])?>">Details</a>
                         </div>
                         <div class="event-timer">
                             <div class="mt-40" data-countdown="2022/06/01"></div>
@@ -164,7 +165,7 @@ use yii\helpers\Url;
                 <div class="col-xl-4 col-lg-6 col-md-6">
                     <div class="latest-news mb-40">
                         <div class="news__thumb mb-25">
-                            <img src="/img/blog/latest/lb1.jpg" alt="">
+
                         </div>
                         <div class="news__caption white-bg">
                             <div class="news-meta mb-15">

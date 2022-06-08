@@ -5,6 +5,8 @@ namespace app\controllers;
 
 use app\models\Category;
 use app\models\Product;
+use app\models\ProductTag;
+use app\models\Tag;
 use Yii;
 use yii\data\Pagination;
 
@@ -14,7 +16,8 @@ class CategoryController extends AppController
         $hits = Product::find()->where(['hit'=>'1'])->all();
         $this->setMeta('K.O');
         $news = Product::find()->where(['new'=>'1'])->all();
-        return $this->render('index',compact('hits','news'));
+        $top_sale= Product::find()->with('saleImg')->where(['top_sale'=>'1'])->one();
+        return $this->render('index',compact('hits','news','top_sale'));
     }
     public function actionView(){
         $id = Yii::$app->request->get('id');
@@ -51,10 +54,12 @@ class CategoryController extends AppController
         $data = Product::find()->all();
         $Category = Category::find()->all();
         $this->setMeta('K.O | '.'All-product');
-        $query = Product::find()->select(['name','image','price','old_price','id']);
+        $query = Product::find()->select(['name','image','price','old_price','id','new','sale']);
         $pages = new Pagination(['totalCount'=>$query->count(),'pageSize'=>6,'forcePageParam'=>false,
             'pageSizeParam'=> false]);
         $products = $query->offset($pages->offset)->limit($pages->limit)->all();
-        return $this->render('product',compact('data','pages','Category','products'));
+        $tags = Tag::find()->all();
+        return $this->render('product',compact('data','pages','Category','products','tags'));
     }
+
 }

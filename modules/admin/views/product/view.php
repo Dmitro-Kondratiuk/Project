@@ -79,20 +79,28 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format'=>'html'
 
             ],
+            [
+                'attribute'=>'top_sale',
+                'value'=>function($new){
+                    if($new->top_sale == 1){
+                        $st = "<span class='text-primary'>Топ продаж</span>";
+                    }else{
+                        $st = "<span></span>";
+                    }
+                    return $st;
+                },
+                'format'=>'html'
+
+            ],
             'count',
+            'tagStr',
+            [
+                    'attribute'=>'img',
+                    'format'=>'image'
+            ]
         ],
     ]) ?>
-    <?php
-    \metalguardian\fotorama\Fotorama::setDefaults(
-        [
-            'nav' => 'thumbs',
-            'spinner' => [
-                'lines' => 20,
-            ],
-            'loop' => true,
-            'hash' => true,
-        ]
-    );
+<?php
     foreach ($model->productImg as $item){
         echo Html::img('@web/upload/Product/'.$item->name);
     }

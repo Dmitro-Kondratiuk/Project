@@ -35,6 +35,7 @@ class AppAsset extends AssetBundle
         "css/responsive.css",
     ];
     public $js = [
+        "js/ajaxlibsjquery1.11.1jquery.min.js",
         "js/vendor/jquery-1.12.4.min.js",
         "js/popper.min.js",
         "js/bootstrap.min.js",
@@ -53,6 +54,11 @@ class AppAsset extends AssetBundle
         "js/main.js",
         "js/jquery.cookie.js",
         "js/jquery.accordion.js",
+        'js/fileinput.min.js',
+        'js/bootstrap-datetimepicker.fr.js',
+        'js/bootstrap-datetimepicker.min.js',
+        'js/select2-krajee.min.js',
+        'js/select2.full.min.js'
 
 
     ];

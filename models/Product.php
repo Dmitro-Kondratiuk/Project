@@ -18,5 +18,11 @@ public static function tableName()
     public function getProductImage(){
         return $this->hasMAny(ProductImage::class,['product_id'=>'id']);
     }
+    public function getSaleImg(){
+        return $this->hasOne(SaleImage::class,['product_id'=>'id']);
+    }
+    public function getProductTag(){
+        return $this->hasMany(ProductTag::class,['product_id'=>'id']);
+    }
 
 }

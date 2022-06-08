@@ -1,20 +1,18 @@
 <?php
 
-namespace app\modules\admin\models;
+namespace app\models;
 
 use Yii;
-use yii\helpers\Html;
 
 /**
- * This is the model class for table "product_image".
+ * This is the model class for table "sale_image".
  *
  * @property int $id
  * @property string $name
- * @property string $class
  * @property int $product_id
- * @property string|null $alt
+ * @property string $alt
  */
-class ProductImage extends \yii\db\ActiveRecord
+class SaleImage extends \yii\db\ActiveRecord
 {
     public $attachment;
     /**
@@ -22,7 +20,7 @@ class ProductImage extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'product_image';
+        return 'sale_image';
     }
 
     /**
@@ -31,14 +29,11 @@ class ProductImage extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'class', 'product_id'], 'required'],
-            [['product_id'], 'integer'],
-            [['name', 'class', 'alt'], 'string', 'max' => 255],
+            [['name'], 'required'],
+            [['id', 'product_id'], 'integer'],
+            [['name'], 'string', 'max' => 255],
             [['attachment'], 'image'],
         ];
-    }
-    public function getImg(){
-        return $this->hasMany(Product::class,['id'=>'product_id']);
     }
 
     /**
@@ -49,10 +44,8 @@ class ProductImage extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
-            'class' => 'Class',
             'product_id' => 'Product ID',
             'alt' => 'Alt',
         ];
     }
-
 }

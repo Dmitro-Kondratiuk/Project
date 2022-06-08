@@ -42,7 +42,7 @@ class BlogComent extends \yii\db\ActiveRecord
     }
 
     public function getBlog(){
-        return $this->hasOne(Blog::className(),['blog_id'=>'id']);
+        return $this->hasOne(Blog::class,['blog_id'=>'id']);
     }
     /**
      * {@inheritdoc}
