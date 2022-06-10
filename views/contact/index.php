@@ -78,7 +78,7 @@
                     </div>
                     <div class="col-xl-4 col-lg-3 d-none d-xl-block ">
                         <div class="section-link mb-80 text-right">
-                            <a class="btn theme-btn" href="#"><i class="fas fa-phone"></i> make call</a>
+                            <a class="btn text-success" href="tel:+380671406238"><i class="fas fa-phone"></i> make call</a>
                         </div>
                     </div>
                 </div>

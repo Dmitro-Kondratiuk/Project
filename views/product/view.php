@@ -1,5 +1,6 @@
 
 <main>
+<?//= $hash = Yii::$app->getSecurity()->generatePasswordHash('dima');?>
     <?php if (Yii::$app->session->hasFlash('success')): ?>
         <div class="alert alert-success alert-dismissable">
             <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
@@ -86,45 +87,6 @@
                             <span class="old-price">$<?= $products->old_price?></span>
                         </div>
                         <div class="product-variant">
-                            <div class="product-color variant-item">
-                                <div class="variant-name">
-                                    <span>Colors</span>
-                                </div>
-                                <ul class="shop-link shop-color">
-                                    <li><a href="shop.html"><span class="blue"></span></a></li>
-                                    <li><a href="shop.html"><span class="green"></span> </a></li>
-                                    <li><a href="shop.html"><span class="orange"></span> </a></li>
-                                    <li><a href="shop.html"><span class="navy"></span> </a></li>
-                                    <li><a href="shop.html"><span class="pinkish"></span> </a></li>
-                                    <li><a href="shop.html"><span class="vista"></span> </a></li>
-                                </ul>
-                            </div>
-
-                            <div class="product-size variant-item">
-                                <div class="variant-name">
-                                    <span>size</span>
-                                </div>
-                                <ul class="shop-link shop-size">
-                                    <li><a href="shop.html">xxl   </a></li>
-                                    <li class="active"><a href="shop.html">xl </a></li>
-                                    <li><a href="shop.html">lg </a></li>
-                                    <li><a href="shop.html">md  </a></li>
-                                    <li><a href="shop.html">sm </a></li>
-                                </ul>
-                            </div>
-
-                            <div class="product-Metarial variant-item">
-                                <div class="variant-name">
-                                    <span>Material</span>
-                                </div>
-                                <ul class="shop-link shop-size">
-                                    <li><a href="shop.html">leather</a></li>
-                                    <li class="active"><a href="shop.html">resin</a></li>
-                                    <li><a href="shop.html">metal </a></li>
-                                    <li><a href="shop.html">fiber </a></li>
-                                    <li><a href="shop.html">slag </a></li>
-                                </ul>
-                            </div>
 
                             <div class="product-desc variant-item">
                                 <p><?= $products->small_content ?></p>
@@ -142,11 +104,6 @@
                             <div class="product-action-details variant-item">
                                 <div class="product-details-action">
                                     <form action="#">
-                                        <div class="plus-minus">
-                                            <div class="cart-plus-minus"><input type="text" value="1" id="qty"/></div>
-                                        </div>
-                                        <button class="details-action-icon" type="submit"><i class="fas fa-heart"></i></button>
-                                        <button class="details-action-icon" type="submit"><i class="fas fa-hourglass"></i></button>
                                         <div class="details-cart mt-40">
                                             <a href="<?=\yii\helpers\Url::to(['/cart/add/','id'=>$products->id])?>" class="btn theme-btn" data-id="<?=$products->id?>">Byu</a>
                                         </div>
@@ -276,7 +233,7 @@
                     <div class="product-wrapper">
                         <div class="product-img mb-25">
                             <a href="<?= \yii\helpers\Url::to(['/product/view','id'=>$one->id]) ?>">
-                                <?= \yii\helpers\Html::img("@web/img/products/{$one->image}",['alt'=>$one->name]) ?>
+                                <?= \yii\helpers\Html::img("@web/upload/product/logo_product/{$one->image}",['alt'=>$one->name]) ?>
 <!--                                <img class="secondary-img" src="/img/products/pro5.jpg" alt="">-->
                             </a>
                             <div class="product-action text-center">

@@ -90,49 +90,14 @@ AppAsset::register($this);
                             <li class="search-btn">
                                 <a class="search-btn nav-search search-trigger" href="#"><i class="fas fa-search"></i></a>
                             </li>
-                            <li class="login-btn"><a href="<?= \yii\helpers\Url::to(['/admin'])?>"><i class="far fa-user"></i></a></li>
-                            <li class="d-shop-cart"><a href="#"><i class="flaticon-shopping-cart" onclick="return getCart()"></i> <?php if(!empty($_SESSION['cart.qty'])): ?><span class="cart-count"><?=$_SESSION['cart.qty']?></span><?php endif; ?></a>
-<!--                                <ul class="minicart">-->
-<!--                                    --><?php //if(!empty($_SESSION['cart'])): ?>
-<!--                                    <li>-->
-<!--                                        --><?php // foreach($_SESSION['cart'] as $id=>$one): ?>
-<!--                                        <div class="cart-img">-->
-<!--                                            <a href="product-details.html">-->
-<!--                                                --><?//=\yii\helpers\Html::img("@web/upload/product/logo_product/{$one['image']}",['height'=>50])?>
-<!--                                            </a>-->
-<!--                                        </div>-->
-<!--                                        <div class="cart-content">-->
-<!--                                            <h3>-->
-<!--                                                <a href="product-details.html">--><?//= $one['name']?><!--</a>-->
-<!--                                            </h3>-->
-<!--                                            <div class="cart-price">-->
-<!--                                                <span class="new">--><?//= $one['price']?><!--</span>-->
-<!--                                                <span>-->
-<!--                                                            <del>--><?//= $one['old_price']?><!--</del>-->
-<!--                                                        </span>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                        <div class="del-icon">-->
-<!--                                            <span data-id="--><?//=$id?><!--" class="text-danger del-item">X</span>-->
-<!--                                        </div>-->
-<!--                                    </li>-->
-<!--                                        --><?php //endforeach; ?>
-<!--                                    <li>-->
-<!--                                        <div class="total-price">-->
-<!--                                            <span class="f-left">Total:</span>-->
-<!--                                            <span class="f-right">$--><?//= $_SESSION['cart.sum']?><!--</span>-->
-<!--                                        </div>-->
-<!--                                    </li>-->
-<!--                                    <li>-->
-<!--                                        <div class="checkout-link">-->
-<!--                                            <a href="--><?//=\yii\helpers\Url::to(['cart/view'])?><!--">Shopping Cart</a>-->
-<!--                                            <a class="red-color"  onclick="clearCart()">Checkout</a>-->
-<!--                                        </div>-->
-<!--                                    </li>-->
-<!--                                    --><?php //else: ?>
-<!--                                        <h3 class="text-center">Корзина пустая</h3>-->
-<!--                                    --><?php //endif;?>
-<!--                                </ul>-->
+                            <li class="login-btn">
+                                <?php if(Yii::$app->user->isGuest):?>
+                                <a href="<?= \yii\helpers\Url::to(['/site/login'])?>"><i class="far fa-user"></i></a></li>
+                                <?php else: ?>
+                                    <a href="<?= \yii\helpers\Url::to(['/admin'])?>"><i class="fa fa-home"></i></a></li>
+                                <?php endif; ?>
+                            <li class="d-shop-cart"><a href="#"><i class="flaticon-shopping-cart" onclick="return getCart()"></i> <?php if(!empty($_SESSION['cart.qty'])): ?>
+                                        <span class="cart-count"><?=$_SESSION['cart.qty']?></span><?php endif; ?></a>
                             </li>
                         </ul>
                     </div>
@@ -265,7 +230,7 @@ Modal::begin([
 'size' =>'modal-lg',
 'footer' => '<button type="button" class="btn btn-secondary" data-dismiss="modal">Продолжить покупки</button>
         <button type="button" class="btn btn-danger" onclick="clearCart()">Очистить корзину</button>,
-       <a href="'.\yii\helpers\Url::to(['cart/view']).'"><button type="button" class="btn btn-success">Оформить заказ</button></a>
+        <a href="'.\yii\helpers\Url::to(['cart/view']).'"><button type="button" class="btn btn-success">Оформить заказ</button></a>
        '
 ]);
 Modal::end();

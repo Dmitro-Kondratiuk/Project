@@ -9,9 +9,33 @@ use app\models\ProductTag;
 use app\models\Tag;
 use Yii;
 use yii\data\Pagination;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 
 class CategoryController extends AppController
 {
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['logout'],
+                'rules' => [
+                    [
+                        'actions' => ['logout,index'],
+                        'allow' => true,
+                        'roles' => ['*'],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'logout' => ['post', 'get'],
+                ],
+            ],
+        ];
+    }
     public function actionIndex(){
         $hits = Product::find()->where(['hit'=>'1'])->all();
         $this->setMeta('K.O');
@@ -33,7 +57,8 @@ class CategoryController extends AppController
             'pageSizeParam'=> false]);
         $products = $query->offset($pages->offset)->limit($pages->limit)->all();
         $cat = Category::findAll($id);
-        return $this->render('view',compact('products','category','cat','pages','Category'));
+        $tags = Tag::find()->all();
+        return $this->render('view',compact('products','category','cat','pages','Category','tags'));
     }
     public function actionSearch(){
         $q = trim(Yii::$app->request->get('q'));
@@ -44,7 +69,9 @@ class CategoryController extends AppController
         $pages = new Pagination(['totalCount'=>$query->count(),'pageSize'=>10,'forcePageParam'=>false,
             'pageSizeParam'=> false]);
         $products = $query->offset($pages->offset)->limit($pages->limit)->all();
-        return $this->render('search',compact('products','pages','q'));
+        $tags = Tag::find()->all();
+        $Category = Category::find()->select(['id','name'])->all();
+        return $this->render('search',compact('products','pages','q','tags','Category'));
     }
     public function actionContact(){
         $this->setMeta('K.O | '.'Contact');

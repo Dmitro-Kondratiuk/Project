@@ -9,8 +9,33 @@ use app\models\OrderItems;
 use app\models\Product;
 use app\models\Order;
 use Yii;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+
 class CartController extends  AppController
 {
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['logout'],
+                'rules' => [
+                    [
+                        'actions' => ['view'],
+                        'allow' => true,
+                        'roles' => ['*'],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'logout' => ['post','get'],
+                ],
+            ],
+        ];
+    }
     public function actionAdd(){
         $id= Yii::$app->request->get('id');
         $product = Product::findOne($id);

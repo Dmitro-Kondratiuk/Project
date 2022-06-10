@@ -6,6 +6,7 @@ use app\models\SaleImage;
 use app\modules\admin\models\Product;
 use app\modules\admin\controllers\ProductSearch;
 use app\modules\admin\models\ProductImage;
+use app\rbac\AuthorRule;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -26,20 +27,20 @@ class ProductController extends Controller
         return array_merge(
             parent::behaviors(),
             [
-//                'access' => [
-//                    'class' => AccessControl::class,
-//                    'rules' => [
-//                        [
-//                            'actions' => ['login', 'error'],
-//                            'allow' => true,
-//                        ],
-//                        [
-//                            'actions' => [''],
-//                            'allow' => true,
-//                            'roles' => ['@'],
-//                        ],
-//                    ],
-//                ],
+                'access' => [
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        [
+                            'actions' => ['login', 'error'],
+                            'allow' => true,
+                        ],
+                        [
+                            'actions' => ['index','create','view','update','rule'],
+                            'allow' => true,
+                            'roles' => ['canAdmin'],
+                        ],
+                    ],
+                ],
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
@@ -89,7 +90,9 @@ class ProductController extends Controller
         $model = new Product();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            if ($model->load($this->request->post())) {
+                $model->user_id = Yii::$app->user->id;
+                $model->save();
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -112,7 +115,9 @@ class ProductController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            $model->user_id = Yii::$app->user->id;
+            $model->save();
             Yii::$app->session->setFlash('success',"Продукт {$model->name} был обновлен");
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -198,17 +203,24 @@ class ProductController extends Controller
         }
     }
     public function actionRule(){
-//        $admin= Yii::$app->authManager->createRole('admin');
-//        $admin->description = 'Администратор';
+//        $admin= Yii::$app->authManager->createRole('user');
+//        $admin->description = 'Обычный прользыватель';
 //        Yii::$app->authManager->add($admin);
-//
-//        $editor= Yii::$app->authManager->createRole('editor');
-//        $editor->description = 'редактор';
-//        Yii::$app->authManager->add($editor);
-//
-//        $ban= Yii::$app->authManager->createRole('ban');
-//        $ban->description = 'Заблокироаный пользыватель';
-//        Yii::$app->authManager->add($admin);
+//        $permit = Yii::$app->authManager->createPermission('canAdmin');
+//        $permit->description = 'Право на  вход  в админку';
+//        Yii::$app->authManager->add($permit);
+//        $role = Yii::$app->authManager->getRole('editor');
+//        $permit = Yii::$app->authManager->getPermission('canAdmin');
+//        Yii::$app->authManager->addChild($role, $permit);
+
+//        $userRole = Yii::$app->authManager->getRole('user');
+//        Yii::$app->authManager->assign($userRole, 2);
+
+//        $auth = Yii::$app->authManager;
+//        $rule = new AuthorRule();
+//        $auth->add($rule);
+
+
         return "Я добавил все";
     }
 }

@@ -33,7 +33,7 @@
                     <div class="row mb-10">
                         <div class="col-xl-5 col-lg-6 col-md-6">
                             <div class="product-showing mb-40">
-                                <p>Showing 1–22 of 32 results</p>
+                                <p>Showing <?= count($product_tag)?> results</p>
                             </div>
                         </div>
                         <div class="col-xl-7 col-lg-6 col-md-6">
@@ -151,24 +151,18 @@
                         <div class="shop-widget">
                             <h3 class="shop-title">Catergories</h3>
                             <ul class="shop-link">
-                                <!--                                --><?php //foreach ($Category as $item):?>
-                                <!--                                    <li><a href="--><?//= \yii\helpers\Url::to(['/category/view','id'=>$item->id])?><!--"><i class="far fa-square"></i> --><?//= $item->name?><!--</a></li>-->
-                                <!--                                --><?php //endforeach; ?>
+                                <?php foreach ($Category as $item):?>
+                                    <li><a href="<?= \yii\helpers\Url::to(['/category/view','id'=>$item->id])?>"><i class="far fa-square"></i> <?= $item->name?></a></li>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
 
                         <div class="shop-widget">
                             <h3 class="shop-title">Tags</h3>
                             <ul class="shop-tag">
-                                <li><a href="shop.html"> Minimal</a></li>
-                                <li><a href="shop.html"> T-Shirts</a></li>
-                                <li><a href="shop.html"> Pants</a></li>
-                                <li><a href="shop.html"> Jeants</a></li>
-                                <li><a href="shop.html"> Winter</a></li>
-                                <li><a href="shop.html"> Latest</a></li>
-                                <li><a href="shop.html"> New</a></li>
-                                <li><a href="shop.html"> Sale</a></li>
-
+                                <?php foreach($tags as $tag): ?>
+                                <li><a href="<?=\yii\helpers\Url::to(['/tag/tag','id'=>$tag->id])?>"> <?= $tag->name?></a></li>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
 

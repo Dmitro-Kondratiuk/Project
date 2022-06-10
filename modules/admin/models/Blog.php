@@ -9,6 +9,7 @@ use yii\db\ActiveRecord;
 use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\web\UploadedFile;
 
 /**
@@ -79,6 +80,7 @@ class Blog extends \yii\db\ActiveRecord
             'description' => 'Мета-описание',
             'small_content' => 'Небольшой текст (который на preview)',
             'image' => 'Картинка',
+            'img'=>"Картинка"
         ];
     }
     public function beforeSave($insert)
@@ -93,5 +95,14 @@ class Blog extends \yii\db\ActiveRecord
     }
     public function getImageLik(){
         return Html::img("/upload/blog/".$this->image);
+    }
+    public function getImg(){
+        if($this->image){
+            $path =  str_replace('admin.','',Url::home(true)).'upload/blog/'.$this->image;
+        }else{
+            $path = str_replace('admin.','',Url::home(true)).'upload/blog/no-image.png';
+        }
+
+        return $path;
     }
 }

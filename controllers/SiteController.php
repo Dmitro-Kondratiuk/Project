@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\User;
+use app\models\Users;
 use app\modules\admin\models\ProductImage;
 use Yii;
 use yii\filters\AccessControl;
@@ -12,7 +14,7 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use yii\web\UploadedFile;
 
-class SiteController extends Controller
+class SiteController extends AppController
 {
     /**
      * {@inheritdoc}
@@ -25,7 +27,7 @@ class SiteController extends Controller
                 'only' => ['logout'],
                 'rules' => [
                     [
-                        'actions' => ['logout,index'],
+                        'actions' => ['logout'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -34,7 +36,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post', 'get'],
+                    'logout' => ['post','get'],
                 ],
             ],
         ];
@@ -86,6 +88,20 @@ class SiteController extends Controller
         return $this->render('login', [
             'model' => $model,
         ]);
+    }
+    public function actionRegister(){
+        $this->setMeta('K.O| Registration');
+        $user = new Users();
+        if($user->load(Yii::$app->request->post())){
+            $password = Yii::$app->request->post('password');
+            debug($password);
+            if($user->save()){
+                Yii::$app->session->setFlash('success','Вы были успешно зарегистрированы ');
+            }else{
+                Yii::$app->session->setFlash('danger','Что-то пошло не так с вашей регистрацией');
+            }
+        }
+        return $this->render('register',compact('user'));
     }
 
     /**

@@ -87,7 +87,11 @@ use yii\helpers\Url;
                                                             <a href="#"><i class="far fa-heart" title="Wishlist"></i></a>
                                                         </div>
                                                         <div class="details-cart mt-40">
+                                                            <?php if(Yii::$app->user->isGuest): ?>
+                                                            <a href="<?= Url::to(['/site/login']) ?>"><button class="btn theme-btn">Login</button></a>
+                                                            <?php else: ?>
                                                             <a href="<?= Url::to(['/cart/add','id'=>$new->id]) ?>"><button class="btn theme-btn" data-id="<?=$new->id ?>">Byu</button></a>
+                                                            <?php endif; ?>
                                                         </div>
                                                     </div>
                                                 </div>

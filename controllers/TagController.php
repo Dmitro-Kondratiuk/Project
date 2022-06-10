@@ -1,6 +1,7 @@
 <?php
 
 namespace app\controllers;
+use app\models\Category;
 use app\models\ProductTag;
 use app\models\Tag;
 use app\modules\admin\models\Product;
@@ -14,6 +15,8 @@ class TagController extends AppController
         };
         $this->setMeta("K.O | ".$e);
         $product_tag = \app\models\Product::find()->joinWith('productTag')->where(['product_tag.tag_id' => $id])->all();
-        return $this->render('tag',compact('product_tag','name'));
+        $tags = Tag::find()->all();
+        $Category = Category::find()->select(['id','name'])->all();
+        return $this->render('tag',compact('product_tag','name','tags','Category'));
     }
 }

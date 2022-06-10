@@ -184,48 +184,21 @@
                                 <button><i class="fa fa-search"></i></button>
                             </form>
                         </div>
-
-                        <div class="shop-widget">
-                            <h3 class="shop-title">Filter selection</h3>
-                            <div class="price-filter">
-                                <div id="slider-range"></div>
-                                <input type="text" id="amount">
-                            </div>
-                        </div>
-
                         <div class="shop-widget">
                             <h3 class="shop-title">Catergories</h3>
                             <ul class="shop-link">
-<!--                                --><?php //foreach ($Category as $item):?>
-<!--                                    <li><a href="--><?//= \yii\helpers\Url::to(['/category/view','id'=>$item->id])?><!--"><i class="far fa-square"></i> --><?//= $item->name?><!--</a></li>-->
-<!--                                --><?php //endforeach; ?>
+                                <?php foreach ($Category as $item):?>
+                                    <li><a href="<?= \yii\helpers\Url::to(['/category/view','id'=>$item->id])?>"><i class="far fa-square"></i> <?= $item->name?></a></li>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
 
                         <div class="shop-widget">
                             <h3 class="shop-title">Tags</h3>
                             <ul class="shop-tag">
-                                <li><a href="shop.html"> Minimal</a></li>
-                                <li><a href="shop.html"> T-Shirts</a></li>
-                                <li><a href="shop.html"> Pants</a></li>
-                                <li><a href="shop.html"> Jeants</a></li>
-                                <li><a href="shop.html"> Winter</a></li>
-                                <li><a href="shop.html"> Latest</a></li>
-                                <li><a href="shop.html"> New</a></li>
-                                <li><a href="shop.html"> Sale</a></li>
-
-                            </ul>
-                        </div>
-
-                        <div class="shop-widget">
-                            <h3 class="shop-title">color</h3>
-                            <ul class="shop-link">
-                                <li><a href="shop.html"><span class="blue"></span> Blue</a></li>
-                                <li><a href="shop.html"><span class="green"></span> Green</a></li>
-                                <li><a href="shop.html"><span class="orange"></span> Orange</a></li>
-                                <li><a href="shop.html"><span class="navy"></span> Navy</a></li>
-                                <li><a href="shop.html"><span class="pinkish"></span> Pinkish</a></li>
-                                <li><a href="shop.html"><span class="vista"></span> Vista Blue</a></li>
+                                <?php foreach($tags as $tag): ?>
+                                <li><a href="<?= \yii\helpers\Url::to(['/tag/tag','id'=>$tag->id]) ?>"><?= $tag->name ?></a></li>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
 

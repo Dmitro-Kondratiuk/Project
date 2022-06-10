@@ -27,7 +27,7 @@
                     <div class="row mb-10">
                         <div class="col-xl-5 col-lg-6 col-md-6">
                             <div class="product-showing mb-40">
-                                <p>Showing 1–22 of 32 results</p>
+                                <p>Showing <?=count($products)?> results</p>
                             </div>
                         </div>
                         <div class="col-xl-7 col-lg-6 col-md-6">
@@ -178,14 +178,6 @@
                         </div>
 
                         <div class="shop-widget">
-                            <h3 class="shop-title">Filter selection</h3>
-                            <div class="price-filter">
-                                <div id="slider-range"></div>
-                                <input type="text" id="amount">
-                            </div>
-                        </div>
-
-                        <div class="shop-widget">
                             <h3 class="shop-title">Catergories</h3>
                             <ul class="shop-link">
                                 <?php foreach ($Category as $item):?>
@@ -202,19 +194,6 @@
                                 <?php endforeach; ?>
                             </ul>
                         </div>
-
-                        <div class="shop-widget">
-                            <h3 class="shop-title">color</h3>
-                            <ul class="shop-link">
-                                <li><a href="shop.html"><span class="blue"></span> Blue</a></li>
-                                <li><a href="shop.html"><span class="green"></span> Green</a></li>
-                                <li><a href="shop.html"><span class="orange"></span> Orange</a></li>
-                                <li><a href="shop.html"><span class="navy"></span> Navy</a></li>
-                                <li><a href="shop.html"><span class="pinkish"></span> Pinkish</a></li>
-                                <li><a href="shop.html"><span class="vista"></span> Vista Blue</a></li>
-                            </ul>
-                        </div>
-
                         <div class="shop-widget">
                             <h3 class="shop-title">Recent Product</h3>
                             <ul class="shop-sidebar-product">

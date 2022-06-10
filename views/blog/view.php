@@ -93,22 +93,26 @@
                             </div>
                             <div class="latest-comments">
                                 <ul>
+                                    <?php if(!empty($blog_cometary)):?>
                                     <?php foreach ($blog_cometary as $one): ?>
                                     <li>
                                         <div class="comments-box">
                                             <div class="comments-avatar">
-                                                <img src="/img/blogs/details/comments1.png" alt="">
+                                                <?=\yii\helpers\Html::img('@web/upload/blog/no-photo.png') ?>
                                             </div>
                                             <div class="comments-text">
                                                 <div class="avatar-name">
                                                     <h5><?= $one->username?></h5>
-                                                    <span><?= $one->created_at = date("F j Y")?></span>
+                                                    <span><?= $one->created_at?></span>
                                                 </div>
                                                 <p><?= $one->content?></p>
                                             </div>
                                         </div>
                                     </li>
                                     <?php endforeach; ?>
+                                    <?php else:?>
+                                    <h4>Коментариев пока что нету</h4>
+                                    <?php endif; ?>
                                 </ul>
                             </div>
                         </div>

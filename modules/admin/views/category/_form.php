@@ -25,7 +25,19 @@ use app\components\MenuWidget;
 
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'img')->textInput(['maxlength' => true]) ?>
+    <?=  $form->field($model, 'file')->widget(\kartik\file\FileInput::class, [
+        'pluginOptions' => [
+            'initialPreview' =>$model->imgP,
+            'showCaption' => false,
+            'showRemove' => false,
+            'showUpload' => false,
+            'browseClass' => 'btn btn-primary btn-block',
+            'browseIcon' => '<i class="fas fa-camera"></i> ',
+            'browseLabel' =>  'Выберите фото для загрузки'
+        ],
+        'options' => ['accept' => 'image/*']
+    ]);
+    ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

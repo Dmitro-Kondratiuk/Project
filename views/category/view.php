@@ -1,5 +1,6 @@
 
 <main>
+
     <!-- breadcrumb-area-start -->
     <section class="breadcrumb-area" data-background="/img/bg/page-title.png">
         <div class="container">
@@ -25,7 +26,7 @@
                 <div class="col-xl-9 col-lg-8">
                     <div class="shop-banner mb-50">
                         <?php foreach ($cat as $one): ?>
-                        <?= \yii\helpers\Html::img("@web/img/logo/{$one->img}",['alt'=>$one->name]) ?>
+                        <?= \yii\helpers\Html::img("@web/upload/category/{$one->img}",['alt'=>$one->name]) ?>
                         <?php endforeach; ?>
                     </div>
                     <!-- tab filter -->
@@ -47,16 +48,6 @@
                                            aria-selected="false"><i class="fas fa-th-large"></i></a>
                                     </li>
                                 </ul>
-                            </div>
-                            <div class="pro-filter mb-40 f-right">
-                                <form action="#">
-                                    <select name="pro-filter" id="pro-filter">
-                                        <option value="1">Shop By </option>
-                                        <option value="2">Top Sales </option>
-                                        <option value="3">New Product </option>
-                                        <option value="4">A to Z Product </option>
-                                    </select>
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -81,8 +72,13 @@
                                                 <?php endif; ?>
                                             </div>
                                             <div class="product-action text-center">
-                                                <a href="#" title="Shoppingb Cart">
-                                                    <i class="flaticon-shopping-cart"></i>
+                                                <?php if(Yii::$app->user->isGuest): ?>
+                                                    <a href="<?= \yii\helpers\Url::to(['/site/login'])?>"><i class="far fa-user"></i></a></li>
+                                                <?php else: ?>
+                                                    <a href="<?= \yii\helpers\Url::to(['cart/add','id'=>$product->id])?>" title="Shoppingb Cart" data-id="<?=$product->id?>">
+                                                        <i class="flaticon-shopping-cart"></i>
+                                                    </a>
+                                                <?php endif;?>
                                                 </a>
                                                 <a href="<?= \yii\helpers\Url::to(['product/view','id'=>$product->id]) ?>" title="Quick View">
                                                     <i class="flaticon-eye"></i>
@@ -97,7 +93,11 @@
                                                 <a href="shop.html">furniture</a>
                                             </div>
                                             <h4>
+                                                <?php if(Yii::$app->user->isGuest): ?>
+                                                <a href="<?= \yii\helpers\Url::to(['site/login'])?>">Авторизироваться</a>
+                                                <?php else: ?>
                                                 <a href="<?= \yii\helpers\Url::to(['product/view','id'=>$product->id]) ?>"><?= $product->name ?></a>
+                                                <?php endif; ?>
                                             </h4>
                                             <div class="product-meta">
                                                 <div class="pro-price">
@@ -157,9 +157,13 @@
                                             </div>
                                             <p><?= $item->small_content?></p>
                                             <div class="product-action">
+                                                <?php if(Yii::$app->user->isGuest): ?>
+                                                    <a href="<?= \yii\helpers\Url::to(['/site/login'])?>"><i class="far fa-user"></i></a></li>
+                                                <?php else: ?>
                                                 <a href="<?= \yii\helpers\Url::to(['cart/add','id'=>$item->id])?>" title="Shoppingb Cart" data-id="<?=$item->id?>">
                                                     <i class="flaticon-shopping-cart"></i>
                                                 </a>
+                                                <?php endif;?>
                                                 <a href="<?=\yii\helpers\Url::to(['product/view','id'=>$item->id])?>" title="Quick View">
                                                     <i class="flaticon-eye"></i>
                                                 </a>
@@ -185,14 +189,6 @@
                         </div>
 
                         <div class="shop-widget">
-                            <h3 class="shop-title">Filter selection</h3>
-                            <div class="price-filter">
-                                <div id="slider-range"></div>
-                                <input type="text" id="amount">
-                            </div>
-                        </div>
-
-                        <div class="shop-widget">
                             <h3 class="shop-title">Catergories</h3>
                             <ul class="shop-link">
                                 <?php foreach ($Category as $item):?>
@@ -204,27 +200,9 @@
                         <div class="shop-widget">
                             <h3 class="shop-title">Tags</h3>
                             <ul class="shop-tag">
-                                <li><a href="shop.html"> Minimal</a></li>
-                                <li><a href="shop.html"> T-Shirts</a></li>
-                                <li><a href="shop.html"> Pants</a></li>
-                                <li><a href="shop.html"> Jeants</a></li>
-                                <li><a href="shop.html"> Winter</a></li>
-                                <li><a href="shop.html"> Latest</a></li>
-                                <li><a href="shop.html"> New</a></li>
-                                <li><a href="shop.html"> Sale</a></li>
-
-                            </ul>
-                        </div>
-
-                        <div class="shop-widget">
-                            <h3 class="shop-title">color</h3>
-                            <ul class="shop-link">
-                                <li><a href="shop.html"><span class="blue"></span> Blue</a></li>
-                                <li><a href="shop.html"><span class="green"></span> Green</a></li>
-                                <li><a href="shop.html"><span class="orange"></span> Orange</a></li>
-                                <li><a href="shop.html"><span class="navy"></span> Navy</a></li>
-                                <li><a href="shop.html"><span class="pinkish"></span> Pinkish</a></li>
-                                <li><a href="shop.html"><span class="vista"></span> Vista Blue</a></li>
+                                <?php foreach($tags as $tag): ?>
+                                <li><a href="<?=\yii\helpers\Url::to(['/tag/tag'.'id'=>$tag->id])?>"> <?=$tag->name ?></a></li>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
 
