@@ -6,7 +6,6 @@ use app\models\SaleImage;
 use app\modules\admin\models\Product;
 use app\modules\admin\controllers\ProductSearch;
 use app\modules\admin\models\ProductImage;
-use app\rbac\AuthorRule;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -209,18 +208,22 @@ class ProductController extends Controller
 //        $permit = Yii::$app->authManager->createPermission('canAdmin');
 //        $permit->description = 'Право на  вход  в админку';
 //        Yii::$app->authManager->add($permit);
-//        $role = Yii::$app->authManager->getRole('editor');
-//        $permit = Yii::$app->authManager->getPermission('canAdmin');
+//        $role = Yii::$app->authManager->getRole('admin');
+//        $permit = Yii::$app->authManager->getPermission('updateOwnPost');
 //        Yii::$app->authManager->addChild($role, $permit);
 
-//        $userRole = Yii::$app->authManager->getRole('user');
-//        Yii::$app->authManager->assign($userRole, 2);
-
+//        $userRole = Yii::$app->authManager->getRole('editor');
+//        Yii::$app->authManager->assign($userRole, 4);
+//
 //        $auth = Yii::$app->authManager;
-//        $rule = new AuthorRule();
-//        $auth->add($rule);
+//        $rule = new \app\rules\AuthorRule();
+////        $auth->add($rule);
+//        $updateOwnPost = $auth->createPermission('updateOwnPost');
+//        $updateOwnPost->description = 'Редактировать собственные посты';
+//        $updateOwnPost->ruleName = $rule->name;
+//        $auth->add($updateOwnPost);
 
-
-        return "Я добавил все";
+//        return Yii::$app->getSecurity()->generatePasswordHash('editor');
+        return 'Технический action';
     }
 }

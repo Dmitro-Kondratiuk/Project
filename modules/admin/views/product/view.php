@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="product-view">
     <h1>Просмотр товара: <?= $model->name ?></h1>
-
+    <?php if (\Yii::$app->user->can('updatePost', ['author_id' =>$model->user_id])):?>
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
@@ -24,15 +24,16 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+    <?php  endif; ?>
 <?php //$img= $model->getImage()?>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-'id',
+                'id',
             [
                 'attribute'=>'category_id',
                 'value'=>$model->product->name ?$model->product->name:''
-],
+            ],
             'name',
             'content:html',
             'small_content:html',

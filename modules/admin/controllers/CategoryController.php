@@ -23,21 +23,20 @@ class CategoryController extends Controller
         return array_merge(
             parent::behaviors(),
             [
-            'access' => [
-                'class' => AccessControl::class,
-                'rules' => [
-            [
-                'actions' => ['login', 'error'],
-                'allow' => true,
-            ],
-            [
-                'actions' => ['index','create','view','update'],
-                'allow' => true,
-                'roles' => ['canAdmin'],
-            ],
-        ],
-    ],
-            [
+                'access' => [
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        [
+                            'actions' => ['login', 'error'],
+                            'allow' => true,
+                        ],
+                        [
+                            'actions' => ['index','create','view','update','rule'],
+                            'allow' => true,
+                            'roles' => ['canAdmin'],
+                        ],
+                    ],
+                ],
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
@@ -45,7 +44,6 @@ class CategoryController extends Controller
                     ],
                 ],
             ]
-                ]
         );
     }
 

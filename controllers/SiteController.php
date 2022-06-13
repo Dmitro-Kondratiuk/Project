@@ -144,5 +144,9 @@ class SiteController extends AppController
         return $this->render('about');
     }
 
+    public function actionArea(){
+        $this->setMeta('K.O | '.Yii::$app->user->identity->username);;
+        return $this->render('area');
+    }
 
 }

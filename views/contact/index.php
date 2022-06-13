@@ -87,22 +87,22 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-box user-icon mb-30">
-                                <?= $form->field($contact,'your_name')?>
+                                <?= $form->field($contact,'your_name')->textInput(['placeholder'=>"Введите свое имя"])?>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-box email-icon mb-30">
-                               <?= $form->field($contact,'your_phone')?>
+                               <?= $form->field($contact,'your_phone')->textInput(['placeholder'=>"Введите свой номер телефона"])?>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-box phone-icon mb-30">
-                                <?= $form->field($contact,'your_email')?>
+                                <?= $form->field($contact,'your_email')->textInput(['placeholder' => "Введите свой  E-mail"])?>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-box subject-icon mb-30">
-                                <?= $form->field($contact,'your_subject')?>
+                                <?= $form->field($contact,'your_subject')->textInput(['placeholder'=>'Введите тему вашего обращения'])?>
                             </div>
                         </div>
                         <div class="col-lg-12">
@@ -112,7 +112,7 @@
                                         'preset' => 'basic', //разработанны стандартные настройки basic, standard, full данную возможность не обязательно использовать
                                         'inline' => false, //по умолчанию false
                                     ],
-                                ])
+                                ])->textInput(  ['placeholder'=>'Введите текст'])
                                 ?>
 
                             <div class="contact-btn text-center">

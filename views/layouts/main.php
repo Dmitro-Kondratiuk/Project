@@ -93,12 +93,16 @@ AppAsset::register($this);
                             <li class="login-btn">
                                 <?php if(Yii::$app->user->isGuest):?>
                                 <a href="<?= \yii\helpers\Url::to(['/site/login'])?>"><i class="far fa-user"></i></a></li>
-                                <?php else: ?>
-                                    <a href="<?= \yii\helpers\Url::to(['/admin'])?>"><i class="fa fa-home"></i></a></li>
+                             <?php elseif (Yii::$app->user->can('canAdmin')): ?>
+                                <a href="<?= \yii\helpers\Url::to(['/admin'])?>"><i class="fa fa-home"></i></a></li>
+                                <?php else:?>
+                                    <a href="<?= \yii\helpers\Url::to(['/site/area'])?>"><i class="fas fa-bath"></i></a></li>
                                 <?php endif; ?>
+                            <?php if(!Yii::$app->user->isGuest): ?>
                             <li class="d-shop-cart"><a href="#"><i class="flaticon-shopping-cart" onclick="return getCart()"></i> <?php if(!empty($_SESSION['cart.qty'])): ?>
                                         <span class="cart-count"><?=$_SESSION['cart.qty']?></span><?php endif; ?></a>
                             </li>
+                            <?php endif; ?>
                         </ul>
                     </div>
                 </div>

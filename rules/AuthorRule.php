@@ -1,5 +1,5 @@
 <?php
-namespace app\rbac;
+namespace app\rules;
 
 use yii\rbac\Rule;
 
@@ -9,6 +9,10 @@ public $name = 'isAuthor'; // Имя правила
 
 public function execute($user_id, $item, $params)
 {
-    return isset($params['author_id']) ? $params['author_id']->createdBy == $user_id : false;
+   if(isset($params['author_id'])and ($params['author_id'])== $user_id){
+       return true;
+   }else{
+       return false;
+   }
 }
 }

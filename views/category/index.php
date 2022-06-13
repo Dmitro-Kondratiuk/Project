@@ -141,11 +141,15 @@ use yii\helpers\Url;
                             </li>
                         </ul>
                         <div class="upc-btn">
+                            <?php if(!Yii::$app->user->isGuest): ?>
                             <a class="btn theme-btn" href="<?= Url::to(['/cart/add','id'=>$top_sale->id]) ?>" data-animation="fadeInLeft" data-id="<?= $top_sale->id?>">shop now</a>
+                            <?php else: ?>
+                            <a href="<?= Url::to(['/site/login']) ?>"><button class="btn theme-btn">Login</button></a>
+                            <?php endif; ?>
                             <a class="btn white-btn" href="<?=Url::to(['product/view','id'=>$top_sale->id])?>">Details</a>
                         </div>
                         <div class="event-timer">
-                            <div class="mt-40" data-countdown="2022/06/01"></div>
+                            <div class="mt-40" data-countdown="2022/06/20"></div>
                         </div>
                     </div>
                 </div>

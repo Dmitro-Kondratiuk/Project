@@ -4,6 +4,7 @@
 ?>
 <main>
 <!--    --><?php //debug($product_tag)?>
+
     <!-- breadcrumb-area-start -->
     <section class="breadcrumb-area" data-background="/img/bg/page-title.png">
         <div class="container">
@@ -82,9 +83,11 @@
                                                     <?php endif; ?>
                                                 </div>
                                                 <div class="product-action text-center">
-                                                    <a href="<?= \yii\helpers\Url::to(['cart/add','id'=>$product->id])?>" title="Shoppingb Cart">
-                                                        <i class="flaticon-shopping-cart"></i>
-                                                    </a>
+                                                    <?php if(Yii::$app->user->isGuest): ?>
+                                                        <a href="<?= \yii\helpers\Url::to(['/site/login'])?>"><i class="far fa-user"></i></a></li>
+                                                    <?php else: ?>
+                                                    <a href="<?= \yii\helpers\Url::to(['cart/add','id'=>$product->id])?>" title="Shoppingb Cart" data-id="<?=$product->id?>">
+                                                        <?php endif;?>
                                                     <a href="<?= \yii\helpers\Url::to(['product/view','id'=>$product->id]) ?>" title="Quick View">
                                                         <i class="flaticon-eye"></i>
                                                     </a>

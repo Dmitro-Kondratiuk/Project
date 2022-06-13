@@ -201,7 +201,7 @@
                             <h3 class="shop-title">Tags</h3>
                             <ul class="shop-tag">
                                 <?php foreach($tags as $tag): ?>
-                                <li><a href="<?=\yii\helpers\Url::to(['/tag/tag'.'id'=>$tag->id])?>"> <?=$tag->name ?></a></li>
+                                <li><a href="<?=\yii\helpers\Url::to(['tag/tag'.'id'=>$tag->id])?>"><?=$tag->name ?></a></li>
                                 <?php endforeach; ?>
                             </ul>
                         </div>

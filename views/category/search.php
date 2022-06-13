@@ -82,9 +82,11 @@
                                                     <?php endif; ?>
                                                 </div>
                                                 <div class="product-action text-center">
-                                                    <a href="#" title="Shoppingb Cart">
-                                                        <i class="flaticon-shopping-cart"></i>
-                                                    </a>
+                                                    <?php if(Yii::$app->user->isGuest): ?>
+                                                        <a href="<?= \yii\helpers\Url::to(['/site/login'])?>"><i class="far fa-user"></i></a></li>
+                                                    <?php else: ?>
+                                                    <a href="<?= \yii\helpers\Url::to(['cart/add','id'=>$product->id])?>" title="Shoppingb Cart" data-id="<?=$product->id?>">
+                                                        <?php endif;?>
                                                     <a href="<?= \yii\helpers\Url::to(['product/view','id'=>$product->id]) ?>" title="Quick View">
                                                         <i class="flaticon-eye"></i>
                                                     </a>
@@ -125,51 +127,6 @@
 
                         </div>
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-<!--                            --><?php //foreach($products as $item) : ?>
-<!--                                <div class="row">-->
-<!--                                    <div class="col-xl-4">-->
-<!--                                        <div class="product-wrapper mb-30">-->
-<!--                                            <div class="sale-tag">-->
-<!--                                                --><?php // if($item->new): ?>
-<!--                                                    <span class="new">new</span>-->
-<!--                                                --><?php //endif; ?>
-<!--                                                --><?php // if($item->sale): ?>
-<!--                                                    <span class="sale">sale</span>-->
-<!--                                                --><?php //endif; ?>
-<!--                                            </div>-->
-<!--                                            <div class="product-img">-->
-<!--                                                <a href="--><?//= \yii\helpers\Url::to(['product/view','id'=>$item->id])?><!--">-->
-<!--                                                    --><?//= \yii\helpers\Html::img("@web/img/product/{$item->img}",['alt'=>$item->name]) ?>
-<!--                                                </a>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="col-xl-8">-->
-<!--                                        <div class="product-content pro-list-content pr-0 mb-50">-->
-<!--                                            <h4>-->
-<!--                                                <a href="--><?//= \yii\helpers\Url::to(['product/view','id'=>$item->id])?><!--">--><?//=$item->name?><!--</a>-->
-<!--                                            </h4>-->
-<!---->
-<!--                                            <div class="product-meta mb-10">-->
-<!--                                                <div class="pro-price">-->
-<!--                                                    <span>--><?//= $item->price?><!--$</span>-->
-<!--                                                    <span class="old-price">--><?//= $item->old_price ?><!--$</span>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                            <p>--><?//= $item->small_content?><!--</p>-->
-<!--                                            <div class="product-action">-->
-<!--                                                <a href="--><?//= \yii\helpers\Url::to(['cart/add','id'=>$item->id])?><!--" title="Shoppingb Cart" data-id="--><?//=$item->id?><!--">-->
-<!--                                                    <i class="flaticon-shopping-cart"></i>-->
-<!--                                                </a>-->
-<!--                                                <a href="--><?//=\yii\helpers\Url::to(['product/view','id'=>$item->id])?><!--" title="Quick View">-->
-<!--                                                    <i class="flaticon-eye"></i>-->
-<!--                                                </a>-->
-<!--                                                <a href="#" title="Wishlist"><i class="flaticon-like"></i></a>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            --><?php //endforeach;?>
                         </div>
                     </div>
 

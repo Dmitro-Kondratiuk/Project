@@ -64,4 +64,8 @@ public function getProduct(){
             'coment' => 'Отзыв',
         ];
     }
+
+    public function remove()
+    {
+    }
 }

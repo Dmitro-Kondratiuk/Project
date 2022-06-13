@@ -111,4 +111,4 @@ use mihaildev\elfinder\ElFinder;
 <?php //debug($model->productImg) ?>
 
 </div>
-<?php debug(\yii\helpers\ArrayHelper::map(\app\models\Tag::find()->all(),'id','name')); ?>
+<?php //debug(\yii\helpers\ArrayHelper::map(\app\models\Tag::find()->all(),'id','name')); ?>

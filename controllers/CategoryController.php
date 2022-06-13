@@ -22,7 +22,7 @@ class CategoryController extends AppController
                 'only' => ['logout'],
                 'rules' => [
                     [
-                        'actions' => ['logout,index'],
+                        'actions' => ['logout','index',],
                         'allow' => true,
                         'roles' => ['*'],
                     ],

@@ -11,6 +11,7 @@ class ContactController extends  AppController
         if($contact->load(Yii::$app->request->post())){
             if($contact->save()){
                 Yii::$app->session->setFlash('success','Ваш коментарий был успешно добавлнен');
+                $contact->clear();
             }else{
                 Yii::$app->session->setFlash('danger','Ваш коментарий что-то до нас не долетел');
             }

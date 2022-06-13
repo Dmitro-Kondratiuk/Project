@@ -76,9 +76,13 @@
                                                     <?php endif; ?>
                                                 </div>
                                                 <div class="product-action text-center">
+                                                    <?php if(Yii::$app->user->isGuest): ?>
+                                                        <a href="<?= \yii\helpers\Url::to(['/site/login'])?>"><i class="far fa-user"></i></a></li>
+                                                    <?php else: ?>
                                                     <a href="<?= \yii\helpers\Url::to(['/cart/add/','id'=>$product->id])?>" title="Shoppingb Cart" data-id="<?=$product->id?>">
                                                         <i class="flaticon-shopping-cart"></i>
                                                     </a>
+                                                    <?php endif; ?>
                                                     <a href="<?= \yii\helpers\Url::to(['product/view','id'=>$product->id]) ?>" title="Quick View">
                                                         <i class="flaticon-eye"></i>
                                                     </a>
@@ -150,9 +154,13 @@
                                         </div>
                                         <p><?= $item->small_content?></p>
                                         <div class="product-action">
+                                            <?php if(Yii::$app->user->isGuest): ?>
+                                                <a href="<?= \yii\helpers\Url::to(['/site/login'])?>"><i class="far fa-user"></i></a></li>
+                                            <?php else: ?>
                                             <a href="<?= \yii\helpers\Url::to(['cart/add','id'=>$item->id])?>" title="Shoppingb Cart" data-id="<?=$item->id?>">
                                                 <i class="flaticon-shopping-cart"></i>
                                             </a>
+                                            <?php endif; ?>
                                             <a href="<?=\yii\helpers\Url::to(['product/view','id'=>$item->id])?>" title="Quick View">
                                                 <i class="flaticon-eye"></i>
                                             </a>

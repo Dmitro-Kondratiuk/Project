@@ -14,13 +14,13 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="product-index">
 
-
     <p>
         <?= Html::a('Create Product', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
+    <?= Yii::$app->user->id?>
+<?//=   Yii::$app->user->can('updatePost', ['author_id' =>$model->user_id])?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -72,11 +72,12 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             //'sale',
             //'count',
+
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, \app\modules\admin\models\Product $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                   return  Url::toRoute([$action, 'id' => $model->id]);
+                }
             ],
         ],
     ]); ?>

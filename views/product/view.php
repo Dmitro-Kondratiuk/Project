@@ -1,6 +1,9 @@
+<?php
 
+use yii\helpers\Url;
+?>
 <main>
-<?//= $hash = Yii::$app->getSecurity()->generatePasswordHash('dima');?>
+    <?php debug($_POST) ?>
     <?php if (Yii::$app->session->hasFlash('success')): ?>
         <div class="alert alert-success alert-dismissable">
             <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
@@ -105,7 +108,11 @@
                                 <div class="product-details-action">
                                     <form action="#">
                                         <div class="details-cart mt-40">
+                                            <?php if(!Yii::$app->user->isGuest): ?>
                                             <a href="<?=\yii\helpers\Url::to(['/cart/add/','id'=>$products->id])?>" class="btn theme-btn" data-id="<?=$products->id?>">Byu</a>
+                                            <?php else: ?>
+                                            <a href="<?= Url::to(['/site/login']) ?>"><button class="btn theme-btn">Login</button></a>
+                                            <?php endif; ?>
                                         </div>
                                     </form>
                                 </div>
@@ -237,9 +244,11 @@
 <!--                                <img class="secondary-img" src="/img/products/pro5.jpg" alt="">-->
                             </a>
                             <div class="product-action text-center">
-                                <a href="#" title="Shoppingb Cart">
-                                    <i class="flaticon-shopping-cart"></i>
-                                </a>
+                                     <?php if(Yii::$app->user->isGuest): ?>
+                                <a href="<?= \yii\helpers\Url::to(['/site/login'])?>"><i class="far fa-user"></i></a></li>
+                                     <?php else: ?>
+                                <a href="<?= \yii\helpers\Url::to(['cart/add','id'=>$sale->id])?>" title="Shoppingb Cart" data-id="<?=$sale->id?>">
+                                    <?php endif;?>
                                 <a href="<?= \yii\helpers\Url::to(['/product/view','id'=>$one->id]) ?>" title="Quick View">
                                     <i class="flaticon-eye"></i>
                                 </a>

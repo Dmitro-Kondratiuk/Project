@@ -88,6 +88,7 @@ class Product extends \yii\db\ActiveRecord
             'sale' => 'Распродажа',
             'count' => 'Количество на складе',
             'tagStr'=>'Тэги',
+            'img'=>'Картинка главная',
             'top_sale'=>'На главную самая тововая распродажа'
         ];
     }

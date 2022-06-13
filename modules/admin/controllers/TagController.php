@@ -4,6 +4,7 @@ namespace app\modules\admin\controllers;
 
 use app\models\Tag;
 use app\models\TagSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -18,9 +19,24 @@ class TagController extends Controller
      */
     public function behaviors()
     {
+
         return array_merge(
             parent::behaviors(),
             [
+                'access' => [
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        [
+                            'actions' => ['login', 'error'],
+                            'allow' => true,
+                        ],
+                        [
+                            'actions' => ['index', 'create', 'view', 'update', 'rule'],
+                            'allow' => true,
+                            'roles' => ['canAdmin'],
+                        ],
+                    ],
+                ],
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
@@ -30,6 +46,7 @@ class TagController extends Controller
             ]
         );
     }
+
 
     /**
      * Lists all Tag models.
