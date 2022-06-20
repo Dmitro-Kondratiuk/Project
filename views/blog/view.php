@@ -1,15 +1,17 @@
-
+<?php
+use yii\helpers\Url;
+?>
 <main>
-<?php debug($user); ?>
+<?php debug($customers->category);?>
     <!-- breadcrumb-area-start -->
     <section class="breadcrumb-area" data-background="img/bg/page-title.png">
         <div class="container">
             <div class="row">
-                <div class="col-xl-12">
+                <div class="col-xl-12"
                     <div class="breadcrumb-text text-center">
                         <h1>Blog</h1>
                         <ul class="breadcrumb-menu">
-                            <li><a href="<?= \yii\helpers\Url::home()?>">home</a></li>
+                            <li><a href="<?= Url::home()?>">home</a></li>
                             <li><span>Blog</span></li>
                         </ul>
                     </div>
@@ -30,7 +32,7 @@
                         </div>
                         <div class="postbox__text bg-none">
                             <div class="post-meta mb-15">
-                                <span><i class="far fa-calendar-check"></i> <?= $post->created_at = date("F j Y")?></span>
+                                <span><i class="far fa-calendar-check"></i> <?= $post->created_at?></span>
                                 <span><i class="far fa-user"></i> <?= $post->username?></span>
                             </div>
                             <h3 class="blog-title">
@@ -43,10 +45,10 @@
                             <div class="row mt-50">
                                 <div class="col-xl-8 col-lg-8 col-md-8 mb-15">
                                     <div class="blog-post-tag">
-                                        <span>Releted Tags</span>
-                                        <a href="#">organic</a>
-                                        <a href="#">Foods</a>
-                                        <a href="#">tasty</a>
+                                        <span>Tags</span>
+                                        <?php foreach ($blog_tag as $item): ?>
+                                        <a href="<?= Url::to(['tag/blog','id'=>$item->id])?>"><?=$item->name?></a>
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4 mb-15">
@@ -149,7 +151,11 @@
 
                                     </div>
                                     <div class="col-xl-12 text-center">
-                                        <?= \yii\helpers\Html::submitButton('Оставить отзыв', ['class' => 'btn btn-success']) ?>
+                                        <?php if(Yii::$app->user->isGuest): ?>
+                                            <a href="<?= \yii\helpers\Url::to(['site/login'])?>" class="btn bg-info text-white container" >Зарегистрироваться</a>
+                                        <?php else:?>
+                                            <button class="btn bg-success text-white container" type="submit">Отправить контактную форму </button>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             <?php \yii\widgets\ActiveForm::end()?>
@@ -162,9 +168,9 @@
                             <span class="animate-border"></span>
                             <h3 class="widget-title">Search Objects</h3>
                         </div>
-                        <form class="search-form">
-                            <input type="text" placeholder="Search">
-                            <button type="submit"><i class="fas fa-search"></i></button>
+                        <form class="search-form" method="get"  action=" <?= \yii\helpers\Url::to(['blog/search']) ?>">
+                            <input type="text" name="q" placeholder="Search">
+                          <button type="submit"><i class="fas fa-search"></i></button>
                         </form>
                     </div>
                     <div class="widget mb-40">
@@ -230,21 +236,14 @@
                             <h3 class="widget-title">Categories</h3>
                         </div>
                         <ul class="cat">
+                            <?php foreach ($customers as $item): ?>
                             <li>
-                                <a href="#">Lifestyle <span class="f-right">78</span></a>
+                                <?php if(!empty($item->id)): ?>
+                                <a href="<?=\yii\helpers\Url::to(['blog/category','id'=>$item->id]) ?>"><?= $item->name ?><span class="f-right"></span></a>
+                                <?php else: ?>
+                                <?php endif; ?>
                             </li>
-                            <li>
-                                <a href="#">Travel <span class="f-right">42</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Fashion <span class="f-right">32</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Music <span class="f-right">85</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Branding <span class="f-right">05</span></a>
-                            </li>
+                            <?php endforeach; ?>
                         </ul>
                     </div>
                     <div class="widget mb-40">

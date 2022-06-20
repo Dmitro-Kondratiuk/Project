@@ -25,6 +25,7 @@ class ProductController extends  AppController
             $content->product_id = $products->id;
             if($content->save()){
                 Yii::$app->session->setFlash('success','Ваш коментарий был успешно добавлнен');
+                return $this->refresh();
             }else{
                 Yii::$app->session->setFlash('danger','Ваш коментарий что-то до нас не долетел');
             }

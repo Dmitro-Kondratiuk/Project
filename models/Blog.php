@@ -20,6 +20,7 @@ use Yii;
  */
 class Blog extends \yii\db\ActiveRecord
 {
+    public $ordersCount;
     public function  behaviors()
     {
         return [
@@ -49,7 +50,7 @@ class Blog extends \yii\db\ActiveRecord
         return [
             [['name', 'content'], 'required'],
             [['content', 'keywords', 'description', 'small_content'], 'string'],
-            [['date'], 'safe'],
+            [['date','ordersCount'], 'safe'],
             [['name', 'img'], 'string', 'max' => 255],
         ];
     }
@@ -69,5 +70,11 @@ class Blog extends \yii\db\ActiveRecord
             'small_content' => 'Небольшой текст (который на preview)',
             'img' => 'Картинка',
         ];
+    }
+    public function getCategory(){
+        return $this->hasOne(CategoryBlog::class,['id'=>'category_id']);
+    }
+    public function getBlogTag(){
+        return $this->hasMany(BlogTag::class,['blog_id'=>'id']);
     }
 }

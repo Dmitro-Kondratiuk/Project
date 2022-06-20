@@ -116,7 +116,11 @@
                                 ?>
 
                             <div class="contact-btn text-center">
-                                <button class="btn" type="submit">Отправить контактную форму </button>
+                                <?php if(Yii::$app->user->isGuest): ?>
+                                <a href="<?= \yii\helpers\Url::to(['site/login'])?>" class="btn bg-info text-white" >Зарегистрироваться</a>
+                                <?php else:?>
+                                <button class="btn bg-success text-white" type="submit">Отправить контактную форму </button>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>

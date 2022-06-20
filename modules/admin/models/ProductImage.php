@@ -4,6 +4,7 @@ namespace app\modules\admin\models;
 
 use Yii;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "product_image".
@@ -54,5 +55,14 @@ class ProductImage extends \yii\db\ActiveRecord
             'alt' => 'Alt',
         ];
     }
+    public function getImageUrl(){
+        if($this->name){
+            $path = str_replace('admin','',Url::home(true)).'/upload/product/'.$this->name;
+        }else{
+            $path = ' ';
+        }
+        return $path;
+    }
+
 
 }

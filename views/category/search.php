@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="breadcrumb-text text-center">
-                        <h3>Вот что мне удалось найти позапросу:  <?= \yii\helpers\Html::encode($q) ?></h3>
+                        <h3>Вот что мне удалось найти по запросу:  <?= \yii\helpers\Html::encode($q) ?></h3>
                         <ul class="breadcrumb-menu">
                             <li><a href="<?= \yii\helpers\Url::home() ?>">Главная</a></li>
                             <li><span>shop</span></li>

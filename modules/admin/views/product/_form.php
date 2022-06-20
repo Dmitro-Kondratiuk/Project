@@ -45,6 +45,7 @@ use mihaildev\elfinder\ElFinder;
 
     <?=  $form->field($model, 'file')->widget(\kartik\file\FileInput::class, [
         'pluginOptions' => [
+            'initialPreview' =>$model->ImageLik,
             'showCaption' => false,
             'showRemove' => false,
             'showUpload' => false,
@@ -83,7 +84,7 @@ use mihaildev\elfinder\ElFinder;
     ],
     'pluginOptions' => [
             'deleteUrl'=>\yii\helpers\Url::to(['product/del-img']),
-            'initialPreview' =>$model->imgName,
+            'initialPreview' =>$model->imageLinks,
             'initialPreviewAsData'=>true,
             'initialPreviewConfig'=>$model->imageLinksDate,
             'overwriteInitial'=>false,

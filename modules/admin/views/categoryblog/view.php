@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Coment */
+/* @var $model app\models\CategoryBlog */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Coments', 'url' => ['index']];
+$this->title = $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Category Blogs', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="coment-view">
+<div class="category-blog-view">
 
 
 
@@ -30,14 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'username',
-            'email:email',
-            'coment:ntext',
-            [
-                    'attribute'=>'product_id',
-                    'value'=>$model->product->name,
-            ],
-            'created_at',
+            'name',
+            'image',
         ],
     ]) ?>
 

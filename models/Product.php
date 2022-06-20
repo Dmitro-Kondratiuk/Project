@@ -24,5 +24,7 @@ public static function tableName()
     public function getProductTag(){
         return $this->hasMany(ProductTag::class,['product_id'=>'id']);
     }
-
+    public function getComent(){
+    return $this->hasMany(Coment::class,['product_id'=>'id']);
+    }
 }

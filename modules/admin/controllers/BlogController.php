@@ -118,7 +118,9 @@ class BlogController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        if ($this->request->isPost && $model->load($this->request->post()) ) {
+            $model->username = \Yii::$app->user->identity->username;
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

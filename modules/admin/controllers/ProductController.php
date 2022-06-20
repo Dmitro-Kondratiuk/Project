@@ -10,6 +10,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 use yii\web\UploadedFile;
 use Yii;
 
@@ -34,7 +35,7 @@ class ProductController extends Controller
                             'allow' => true,
                         ],
                         [
-                            'actions' => ['index','create','view','update','rule'],
+                            'actions' => ['index','create','view','update','rule','del-img','save-img','delete'],
                             'allow' => true,
                             'roles' => ['canAdmin'],
                         ],
@@ -170,7 +171,7 @@ class ProductController extends Controller
             } else {
                 echo 'Ошибка валидации';
             }
-//            Yii::$app->response->format = Response::FORMAT_JSON;
+            Yii::$app->response->format = Response::FORMAT_JSON;
             return $file;
         }
     }

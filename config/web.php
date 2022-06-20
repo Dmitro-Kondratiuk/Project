@@ -10,6 +10,9 @@ $config = [
     'language' =>'ru-Ru',
     'defaultRoute'=>'category/index',
     'modules' => [
+        'treemanager' =>  [
+            'class' => '\kartik\tree\Module',
+            ],
         'admin' => [
             'class' => 'app\modules\admin\Module',
             'layout'=>'main',
@@ -49,15 +52,15 @@ $config = [
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-            'transport' => [
-                'class' => 'Swift_SmtpTransport',
-                'host' => 'smtp.google.com',
-                'username' => 'kondratyuk.mitya',
-                'password' => 'Proger5328',
-                'port' => '465',
-                'encryption' => 'ssl',
-            ],
-            'useFileTransport' => false,
+//            'transport' => [
+//                'class' => 'Swift_SmtpTransport',
+//                'host' => 'smtp.google.com',
+//                'username' => 'kondratyuk.mitya@gmail.com',
+//                'password' => 'Proger5328',
+//                'port' => '465',
+//                'encryption' => 'ssl',
+//            ],
+            'useFileTransport' => true,
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -78,6 +81,7 @@ $config = [
                 'category/<id:\d+>'=>'category/view',
                 'product/<id:\d+>'=>'product/view',
                 'blog/<id:\d+>'=>'blog/view',
+                'blog/category/<id:\d+>'=>'blog/category',
                 'tag/<id:\d+>'=>'tag/tag',
                 'cart/<id:\d+>'=>'cart/add',
                 'search'=>'category/search'

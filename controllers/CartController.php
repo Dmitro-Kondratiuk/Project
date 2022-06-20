@@ -24,7 +24,7 @@ class CartController extends  AppController
                     [
                         'actions' => ['view'],
                         'allow' => true,
-                        'roles' => ['*'],
+                        'roles' => ['@'],
                     ],
                 ],
             ],

@@ -29,7 +29,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'username',
             'email:email',
             'coment:html',
-            'product_id',
+            [
+                'attribute'=>'product_id',
+                'value'=>function($name){
+                    return $name->product->name;
+                },
+            ],
             //'created_at',
             [
                 'class' => ActionColumn::className(),

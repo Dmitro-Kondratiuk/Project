@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-    <?= Yii::$app->user->id?>
+<!--    --><?//= Yii::$app->user->identity->username?>
 <?//=   Yii::$app->user->can('updatePost', ['author_id' =>$model->user_id])?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

@@ -5,19 +5,19 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "tag".
+ * This is the model class for table "tag_blog".
  *
  * @property int $id
  * @property string $name
  */
-class Tag extends \yii\db\ActiveRecord
+class TagBlog extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'tag';
+        return 'tag_blog';
     }
 
     /**
@@ -41,6 +41,4 @@ class Tag extends \yii\db\ActiveRecord
             'name' => 'Name',
         ];
     }
-
-
 }

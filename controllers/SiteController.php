@@ -93,10 +93,11 @@ class SiteController extends AppController
         $this->setMeta('K.O| Registration');
         $user = new Users();
         if($user->load(Yii::$app->request->post())){
-            $password = Yii::$app->request->post('password');
-            debug($password);
+            $password = $user->password;
+            $user->password=Yii::$app->getSecurity()->generatePasswordHash($password);
             if($user->save()){
                 Yii::$app->session->setFlash('success','Вы были успешно зарегистрированы ');
+                return $this->refresh();
             }else{
                 Yii::$app->session->setFlash('danger','Что-то пошло не так с вашей регистрацией');
             }

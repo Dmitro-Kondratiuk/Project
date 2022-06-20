@@ -3,7 +3,6 @@
 use yii\helpers\Url;
 ?>
 <main>
-    <?php debug($_POST) ?>
     <?php if (Yii::$app->session->hasFlash('success')): ?>
         <div class="alert alert-success alert-dismissable">
             <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
@@ -150,7 +149,7 @@ use yii\helpers\Url;
                                             </div>
                                             <div class="pro-commnets-text">
                                                 <h4><?= $one->username?> -
-                                                    <span><?=$one->created_at = date("F j Y") ?></span>
+                                                    <span><?=$one->created_at ?></span>
                                                 </h4>
                                                 <div class="pro-rating">
                                                     <i class="far fa-star"></i>
@@ -203,7 +202,11 @@ use yii\helpers\Url;
                                                     <?= $form->field($content,'email')?>
                                                 </div>
                                                 <div class="col-xl-12">
-                                                    <?= \yii\helpers\Html::submitButton('Оставить отзыв', ['class' => 'btn btn-success']) ?>
+                                                    <?php if(Yii::$app->user->isGuest): ?>
+                                                        <a href="<?= \yii\helpers\Url::to(['site/login'])?>" class="btn bg-info text-white container" >Зарегистрироваться</a>
+                                                    <?php else:?>
+                                                        <button class="btn bg-success text-white container" type="submit">Отправить контактную форму </button>
+                                                    <?php endif; ?>
                                                 </div>
                                             </div>
                                         <?php \yii\widgets\ActiveForm::end()  ?>

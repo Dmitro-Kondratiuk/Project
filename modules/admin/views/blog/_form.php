@@ -13,7 +13,14 @@ use kartik\file\FileInput;
 <div class="blog-form">
 <?//= getcwd()?>
     <?php $form = ActiveForm::begin(); ?>
-    <?= $form->field($model, 'username')->textInput() ?>
+
+    <?php
+    $category_name = \app\models\CategoryBlog::find()->all();
+    $params = [
+        'prompt' => 'Выберите категорию'
+    ];
+    $items = \yii\helpers\ArrayHelper::map($category_name,'id','name') ?>
+    <?=  $form->field($model,'category_id')->dropDownList($items,$params)?>
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
     <?=
     $form->field($model, 'content')->widget(CKEditor::className(), [
@@ -37,6 +44,16 @@ use kartik\file\FileInput;
             'inline' => false, //по умолчанию false
         ],
     ])?>
+    <?=
+    $form->field($model, 'tag_array')->widget(\kartik\select2\Select2::classname(), [
+        'data' => \yii\helpers\ArrayHelper::map(\app\models\TagBlog::find()->all(),'id','name'),
+        'language' => 'ru',
+        'options' => ['placeholder' => 'Выбирете Тэг','multiple' => true],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ]);
+    ?>
 
     <?=  $form->field($model, 'file')->widget(FileInput::className(), ['pluginOptions' => [
         'showCaption' => false,

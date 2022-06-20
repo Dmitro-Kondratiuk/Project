@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="tag-view">
 
 
-
+    <?php if (\Yii::$app->user->can('updateTag', ['author_id' =>$model->user_id])):?>
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
+<?php  endif;?>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
