@@ -96,10 +96,10 @@ use yii\helpers\Url;
 
                             <div class="product-info-list variant-item">
                                 <ul>
-                                    <li><span>Brands:</span><?=$products->category->name?></li>
-                                    <li><span>Product Code:</span> <?=$products->id ?></li>
-                                    <li><span>Quantity in stock:   </span> <?=$products->count ?></li>
-                                    <a href="<?= \yii\helpers\Url::to(['category/view','id'=>$products->category->id]) ?>"><li><span>Stock:</span> <span class="in-stock"><?=   $products->category->name?></span></li></a>
+                                    <li><span><?= Yii::t('common','Брэнд')?>:</span><?=$products->category->name?></li>
+                                    <li><span><?= Yii::t('common','Код продукта')?>:</span> <?=$products->id ?></li>
+                                    <li><span><?= Yii::t('common','Количество на складе')?>:   </span> <?=$products->count ?></li>
+                                    <a href="<?= \yii\helpers\Url::to(['category/view','id'=>$products->category->id]) ?>"><li><span><?= Yii::t('common','Родительская категория')?>:</span> <span class="in-stock"><?=   $products->category->name?></span></li></a>
                                 </ul>
                             </div>
 
@@ -108,9 +108,9 @@ use yii\helpers\Url;
                                     <form action="#">
                                         <div class="details-cart mt-40">
                                             <?php if(!Yii::$app->user->isGuest): ?>
-                                            <a href="<?=\yii\helpers\Url::to(['/cart/add/','id'=>$products->id])?>" class="btn theme-btn" data-id="<?=$products->id?>">Byu</a>
+                                            <a href="<?=\yii\helpers\Url::to(['/cart/add/','id'=>$products->id])?>" class="btn theme-btn" data-id="<?=$products->id?>"><?= Yii::t('common','Купить')?></a>
                                             <?php else: ?>
-                                            <a href="<?= Url::to(['/site/login']) ?>"><button class="btn theme-btn">Login</button></a>
+                                            <a href="<?= Url::to(['/site/login']) ?>"  class="btn btn-primary">Login</a>
                                             <?php endif; ?>
                                         </div>
                                     </form>
@@ -126,17 +126,20 @@ use yii\helpers\Url;
                         <ul class="nav review-tab" id="myTabproduct" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab6" data-toggle="tab" href="#home6" role="tab" aria-controls="home"
-                                   aria-selected="true">Description </a>
+                                   aria-selected="true"><?= Yii::t('common','Описание товара') ?></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="profile-tab6" data-toggle="tab" href="#profile6" role="tab" aria-controls="profile"
-                                   aria-selected="false">Reviews</a>
+                                   aria-selected="false"><?= Yii::t('common','Коментарий') ?></a>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent2">
                             <div class="tab-pane fade show active" id="home6" role="tabpanel" aria-labelledby="home-tab6">
                                 <div class="desc-text">
-                                    <p><?= $products->content?></p>
+                                    <?php $text = $products->content ?>
+                                    <p><?= Yii::t('content',"{text}",[
+                                            'text'=>$text
+                                        ])?></p>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="profile6" role="tabpanel" aria-labelledby="profile-tab6">
@@ -232,7 +235,7 @@ use yii\helpers\Url;
             <div class="row">
                 <div class="col-xl-12">
                     <div class="area-title text-center mb-50">
-                        <h2>Sale</h2>
+                        <h2><?= Yii::t('common','Распродажа') ?></h2>
                         <p>Goods that are on sale</p>
                     </div>
                 </div>

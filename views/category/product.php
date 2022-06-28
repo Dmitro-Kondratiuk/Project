@@ -1,5 +1,4 @@
 <main>
-<!--    --><?php //debug($tags) ?>
     <!-- breadcrumb-area-start -->
     <section class="breadcrumb-area" data-background="/img/bg/page-title.png">
         <div class="container">
@@ -178,15 +177,15 @@
                     <div class="sidebar-shop">
 
                         <div class="shop-widget">
-                            <h3 class="shop-title">Search by</h3>
-                            <form action="<?= \yii\helpers\Url::to(['category/search'])?>" class="shop-search">
+                            <h3 class="shop-title"><?= Yii::t('content','Поиск')?></h3>
+                            <form action="<?= \yii\helpers\Url::to(['category/search'])?>" method="get" class="shop-search">
                                 <input type="text" placeholder="Your keyword...." name="q">
                                 <button><i class="fa fa-search"></i></button>
                             </form>
                         </div>
 
                         <div class="shop-widget">
-                            <h3 class="shop-title">Catergories</h3>
+                            <h3 class="shop-title"><?= Yii::t('content','Категории')?></h3>
                             <ul class="shop-link">
                                 <?php foreach ($Category as $item):?>
                                 <li><a href="<?= \yii\helpers\Url::to(['/category/view','id'=>$item->id])?>"><i class="far fa-square"></i> <?= $item->name?></a></li>
@@ -195,7 +194,7 @@
                         </div>
 
                         <div class="shop-widget">
-                            <h3 class="shop-title">Tags</h3>
+                            <h3 class="shop-title"><?= Yii::t('content','Тэги')?></h3>
                             <ul class="shop-tag">
                                 <?php foreach($tags as $tag): ?>
                                 <li><a href="<?=\yii\helpers\Url::to(['/tag/tag','id'=>$tag->id]) ?>"><?=$tag->name ?></a></li>
@@ -203,7 +202,7 @@
                             </ul>
                         </div>
                         <div class="shop-widget">
-                            <h3 class="shop-title">Recent Product</h3>
+                            <h3 class="shop-title"><?= Yii::t('content','Последний продукт')?></h3>
                             <ul class="shop-sidebar-product">
                                 <li>
                                     <div class="side-pro-img">

@@ -5,10 +5,10 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="breadcrumb-text text-center">
-                        <h1>Blog</h1>
+                        <h1><?= Yii::t('common','Блог')?></h1>
                         <ul class="breadcrumb-menu">
-                            <li><a href="<?=\yii\helpers\Url::home() ?>">Home</a></li>
-                            <li><span>Blog</span></li>
+                            <li><a href="<?=\yii\helpers\Url::home() ?>"><?= Yii::t('common','На главную') ?></a></li>
+                            <li><span><?= Yii::t('common','Блог') ?></span></li>
                         </ul>
                     </div>
                 </div>

@@ -57,7 +57,16 @@ AppAsset::register($this);
 
                     <div class="category-menu">
                         <h4>Category</h4>
-                       <?= \app\components\MenuWidget::widget(['tpl'=>'menu']) ?>
+                        <ul>
+<!--                            --><?//= \app\components\MenuWidget::widget(['tpl'=>'menu']) ?>
+                            <?php foreach (Yii::$app->params['menu'] as $id=>$item): ?>
+                            <li><a href="<?= $item['url']?>"><i class="flaticon-shopping-cart-1"></i> <?= $item['title'] ?></a></li>
+                            <?php if(!empty($item['items'])): ?>
+                            <?php foreach ($item['items'] as $one) ?>
+                                <li><a href="<?=$one['url']?>"><i class="fa fa-space-shuttle"></i> <?= $one['title'] ?></a></li>
+                                <?php endif;?>
+                            <?php endforeach; ?>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-xl-8 col-lg-6 col-md-8 col-8 d-none d-xl-block">
@@ -65,20 +74,20 @@ AppAsset::register($this);
                         <nav id="mobile-menu">
                             <ul>
                                 <li>
-                                    <a href="<?= \yii\helpers\Url::home()?>">Home</a>
+                                    <a href="<?= \yii\helpers\Url::home()?>"><?=Yii::t('common','На главную')?></a>
                                 </li>
 
                                 <li>
-                                    <a href="<?=\yii\helpers\Url::to(['/category/product']) ?>">Products </a>
+                                    <a href="<?=\yii\helpers\Url::to(['/category/product']) ?>"><?=Yii::t('common','Продукт')?> </a>
                                 </li>
                                 <li>
-                                    <a href="<?= \yii\helpers\Url::to(['/blog/index'])?>">Blog</a>
+                                    <a href="<?= \yii\helpers\Url::to(['/blog/index'])?>"><?=Yii::t('common','Блог')?></a>
                                 </li>
                                 <li>
-                                    <a href="<?= \yii\helpers\Url::to(['blog/about'])?>">About Us</a>
+                                    <a href="<?= \yii\helpers\Url::to(['blog/about'])?>"><?=Yii::t('common','О Нас')?></a>
                                 </li>
                                 <li>
-                                    <a href="<?= \yii\helpers\Url::to(['contact/index'])?>">Contact</a>
+                                    <a href="<?= \yii\helpers\Url::to(['contact/index'])?>"><?=Yii::t('common','Контакты')?></a>
                                 </li>
                             </ul>
                         </nav>
@@ -194,7 +203,7 @@ AppAsset::register($this);
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-6">
                         <div class="copyright text-center text-md-left">
-                            <p>Copyright © 2019 <a href="#">BasicTheme</a>. All Rights Reserved</p>
+                            <p><?= $this->render('language') ?></p>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6">

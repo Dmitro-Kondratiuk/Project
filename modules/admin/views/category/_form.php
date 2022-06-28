@@ -10,7 +10,7 @@ use app\components\MenuWidget;
 ?>
 
 <div class="category-form">
-
+<?php //$menu = Yii::$app->params['menu'] ?>
     <?php $form = ActiveForm::begin(); ?>
     <div class="form-group field-category-parent_id has-success">
         <label class="control-lable" for="category-paretn_id">Родительская категория</label>

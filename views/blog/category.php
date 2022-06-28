@@ -22,6 +22,9 @@
     <section class="blog-area pt-100 pb-60">
         <div class="container">
             <div class="row">
+                <?php if(empty($products)): ?>
+                <div class="text-center container text-danger ">Пустая категория</div>
+                <?php else: ?>
                 <?php foreach ($products as $item): ?>
                 <div class="col-lg-6 col-md-6">
                     <article class="postbox post format-image mb-40">
@@ -48,6 +51,7 @@
                     </article>
                 </div>
                 <?php endforeach; ?>
+                <?php endif; ?>
             </div>
             <div class="row">
                 <div class="col-12">

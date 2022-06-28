@@ -15,7 +15,7 @@ class BlogController extends  AppController
 {
     public function  actionIndex(){
         $blog = Blog::find()->all();
-        $this->setMeta('K.O | '.'Blog');
+        $this->setMeta('K.O | '.$blog->name,$blog->keywords,$blog->description);
         $query = Blog::find()->select(['username','image','created_at','id']);
         $pages = new Pagination(['totalCount'=>$query->count(),'pageSize'=>6,'forcePageParam'=>false,
             'pageSizeParam'=> false]);
@@ -28,23 +28,22 @@ class BlogController extends  AppController
         return $this->render('about');
     }
     public function actionView($id){
-        $this->setMeta('K.O | '."$id");
         $post = Blog::find()->where(['id'=>$id])->one();
+        $this->setMeta("K.O | ".$post->name,$post->keywords,$post->description);
         $blog = new BlogComent();
         $category = CategoryBlog::find()->all();
         $qty = Blog::find()->joinWith('category')->where(['category_id'=>1])->count();
         $qty2 = Blog::find()->joinWith('category')->where(['category_id'=>2])->count();
         $qtycar = Blog::find()->joinWith('category')->where(['category_id'=>3])->count();
-        $customers = Blog::find()
-            ->select([
-                '{{category_blog}}.*', // select all customer fields
-                'COUNT(category_id) AS ordersCount' // calculate orders count
-            ])
-            ->joinWith('category') // ensure table junction
-            ->groupBy('{{blog}}.id') // group the result to ensure aggregation function works
-            ->all();
-        debug($customers);
-        die;
+//        $customers = Blog::find()
+//            ->select([
+//                '{{category_blog}}.*', // select all customer fields
+//                'COUNT(category_id) AS ordersCount' // calculate orders count
+//            ])
+//            ->joinWith('category') // ensure table junction
+//            ->groupBy('{{blog}}.id') // group the result to ensure aggregation function works
+//            ->all();
+
         if($blog->load(Yii::$app->request->post())){
             $blog->blog_id = $id;
             if($blog->save()){
@@ -56,7 +55,7 @@ class BlogController extends  AppController
         }
         $blog_cometary =  BlogComent::find()->where(['blog_id'=>$id])->all();
         $blog_tag = TagBlog::find()->all();
-        return $this->render('view',compact('post','blog_cometary','blog','category','qty2','qty','qtycar','blog_tag','customers'));
+        return $this->render('view',compact('post','blog_cometary','blog','category','qty2','qty','qtycar','blog_tag'));
     }
     public function actionCategory($id){
         $this->setMeta('K.O | '.'Category-Blog');

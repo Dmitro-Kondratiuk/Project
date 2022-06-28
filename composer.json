@@ -28,7 +28,9 @@
         "metalguardian/yii2-fotorama-widget": "^1.0",
         "russ666/yii2-countdown": "*",
         "kartik-v/yii2-widget-select2": "@dev",
-        "kartik-v/yii2-tree-manager": "dev-master"
+        "kartik-v/yii2-tree-manager": "dev-master",
+        "paulzi/yii2-adjacency-list" : "^2.2",
+        "codemix/yii2-localeurls": "^1.8"
 
 
     },

@@ -218,7 +218,7 @@ class ProductController extends Controller
 //
 //        $auth = Yii::$app->authManager;
 //        $rule = new \app\rules\AuthorRule();
-////        $auth->add($rule);
+////      $auth->add($rule);
 //        $updateOwnPost = $auth->createPermission('updateOwnPost');
 //        $updateOwnPost->description = 'Редактировать собственные посты';
 //        $updateOwnPost->ruleName = $rule->name;
@@ -228,3 +228,4 @@ class ProductController extends Controller
         return 'Технический action';
     }
 }
+

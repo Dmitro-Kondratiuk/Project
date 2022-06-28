@@ -10,15 +10,16 @@ use mihaildev\elfinder\ElFinder;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 <div class="product-form">
+    <?php $menu =\app\modules\admin\models\Menu::getDropDown() ?>
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
-    <div class="form-group field-product-category_id has-success">
-        <label class="control-lable" for="product-category_id">Родительская категория</label>
-        <select id="product-category_id" class="form-control" name="Product[category_id]">
-            <option value="0">Выбирете категорию для продукта</option>
-            <?php echo MenuWidget::widget(['tpl'=>'product','model'=>$model]) ?>
-        </select>
-    </div>
-
+<!--    <div class="form-group field-product-category_id has-success">-->
+<!--        <label class="control-lable" for="product-category_id">Родительская категория</label>-->
+<!--        <select id="product-category_id" class="form-control" name="Product[category_id]">-->
+<!--            <option value="0">Выбирете категорию для продукта</option>-->
+<!--            --><?php //echo MenuWidget::widget(['tpl'=>'product','model'=>$model]) ?>
+<!--        </select>-->
+<!--    </div>-->
+    <?= $form->field($model, 'category_id')->dropDownList($menu,['prom'=>'добавить меню']) ?>
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
 <!--    --><?//= $form->field($model, 'content')->textarea(['rows' => 6]) ?>

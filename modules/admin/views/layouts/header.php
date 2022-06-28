@@ -4,7 +4,7 @@ use yii\helpers\Html;
 /* @var $this \yii\web\View */
 /* @var $content string */
 ?>
-
+<?php $user = \app\modules\admin\models\Info::find()->where(['user_id' => Yii::$app->user->id])->one() ?>
 <header class="main-header">
 
     <?= Html::a('<span class="logo-mini">APP</span><span class="logo-lg">' . Yii::$app->name . '</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
@@ -235,11 +235,10 @@ use yii\helpers\Html;
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle"
-                                 alt="User Image"/>
 
+                            <?=  Html::img("/upload/user_logo/{$user->image}") ?>
                             <p>
-                                Alexander Pierce - Web Developer
+                                <?= $user->name?> <?= $user->last_name?> - <?=$user->role ?>
                                 <small>Member since Nov. 2012</small>
                             </p>
                         </li>
@@ -258,7 +257,7 @@ use yii\helpers\Html;
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <a href="<?=\yii\helpers\Url::to(['/admin/info/view/','id'=>$user->id])?>" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
                                 <?= Html::a(

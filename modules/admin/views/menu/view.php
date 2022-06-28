@@ -1,17 +1,19 @@
-s<?php
+<?php
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\admin\models\Blog */
+/* @var $model app\modules\admin\models\Menu */
 
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Blogs', 'url' => ['index']];
+$this->title = $model->title;
+$this->params['breadcrumbs'][] = ['label' => 'Menus', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="blog-view">
+<div class="menu-view">
+
+    <?php   if(Yii::$app->user->can('admin')):?>
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -23,20 +25,15 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
+<?php endif; ?>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
-            'name',
-            'content:html',
-            'created_at:datetime',
-            'keywords:ntext',
-            'description:ntext',
-            'small_content:html',
-            'img:image',
-            'username',
-            'tagStr'
+            'parent_id',
+            'title:ntext',
+            'url:url',
+            'sort',
         ],
     ]) ?>
 

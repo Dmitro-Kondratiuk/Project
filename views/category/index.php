@@ -4,14 +4,14 @@
 
 use yii\helpers\Url;
 
-
 ?>
 <main>
-<?php debug($session['cart']) ?>
+
+<?php //debug(Yii::$app->user->id); ?>
     <!-- slider-area start -->
     <section class="slider-area pos-relative">
         <div class="slider-active">
-            <div class="single-slider slide-1-style slide-height d-flex align-items-center" data-background="img/slider/slide1.jpg">
+            <div class="single-slider slide-1-style slide-height d-flex align-items-center" data-background="/img/slider/slide1.jpg">
                 <div class="shape-title bounce-animate">
                     <p class="car">Твоя первая тачка</p>
                 </div>
@@ -21,8 +21,8 @@ use yii\helpers\Url;
                     <div class="row">
                         <div class="col-xl-5 col-lg-12">
                             <div class="area-title mb-50">
-                                <h2>Brand New Products</h2>
-                                <p>Browse the huge variety of our products</p>
+                                <h2><?= Yii::t('content','Новые продукты')?></h2>
+                                <p><?= Yii::t('content','Просмотрите огромное разнообразие нашей продукции')?></p>
                             </div>
                         </div>
                         <div class="col-xl-7 col-lg-12">
@@ -50,9 +50,13 @@ use yii\helpers\Url;
                                                           <?= \yii\helpers\Html::img('@web/upload/product/logo_product/'.$new->image) ?>
                                                         </a>
                                                         <div class="product-action text-center">
-                                                            <a href="#" title="Shoppingb Cart">
+                                                            <?php  if(!Yii::$app->user->isGuest):?>
+                                                            <a href="<?= \yii\helpers\Url::to(['cart/add','id'=>$new->id])?>" title="Shoppingb Cart" data-id="<?=$item->id?>">
                                                                 <i class="flaticon-shopping-cart"></i>
                                                             </a>
+                                                            <?php else: ?>
+                                                            <a href="<?= \yii\helpers\Url::to(['/site/login'])?>"><i class="far fa-user"></i></a></li>
+                                                            <?php endif; ?>
                                                             <a href="<?=  Url::to(['product/view','id'=>$new->id])?>" title="Quick View">
                                                                 <i class="flaticon-eye"></i>
                                                             </a>
@@ -88,9 +92,9 @@ use yii\helpers\Url;
                                                         </div>
                                                         <div class="details-cart mt-40">
                                                             <?php if(Yii::$app->user->isGuest): ?>
-                                                            <a href="<?= Url::to(['/site/login']) ?>"><button class="btn theme-btn">Login</button></a>
+                                                            <a href="<?= Url::to(['/site/login']) ?>"><button class="btn btn-primary">Login</button></a>
                                                             <?php else: ?>
-                                                            <a href="<?= Url::to(['/cart/add','id'=>$new->id]) ?>"><button class="btn theme-btn" data-id="<?=$new->id ?>">Byu</button></a>
+                                                            <a href="<?= Url::to(['/cart/add','id'=>$new->id]) ?>"><button class="btn theme-btn" data-id="<?=$new->id ?>"><?=Yii::t('content','Купить')?></button></a>
                                                             <?php endif; ?>
                                                         </div>
                                                     </div>
@@ -105,8 +109,6 @@ use yii\helpers\Url;
                 </div>
             </section>
     <!-- product-area end -->
-
-
 
     <!-- upcoming-product-area start -->
     <section class="upcoming-product-area pos-relative box-90 pt-120 pb-120"
@@ -144,7 +146,7 @@ use yii\helpers\Url;
                             <?php if(!Yii::$app->user->isGuest): ?>
                             <a class="btn theme-btn" href="<?= Url::to(['/cart/add','id'=>$top_sale->id]) ?>" data-animation="fadeInLeft" data-id="<?= $top_sale->id?>">shop now</a>
                             <?php else: ?>
-                            <a href="<?= Url::to(['/site/login']) ?>"><button class="btn theme-btn">Login</button></a>
+                            <a href="<?= Url::to(['/site/login']) ?>"><button class="btn btn-primary">Login</button></a>
                             <?php endif; ?>
                             <a class="btn white-btn" href="<?=Url::to(['product/view','id'=>$top_sale->id])?>">Details</a>
                         </div>
@@ -164,8 +166,8 @@ use yii\helpers\Url;
             <div class="row">
                 <div class="col-xl-12">
                     <div class="area-title text-center mb-50">
-                        <h2>News Feeds</h2>
-                        <p>Check it out every updates</p>
+                        <h2><?=Yii::t('content','Ленты новостей') ?></h2>
+                        <p><?=Yii::t('content','Проверяйте каждое обновление') ?></p>
                     </div>
                 </div>
             </div>
@@ -250,7 +252,7 @@ use yii\helpers\Url;
                             <div class="subscribe-form mb-50">
                                 <form action="#">
                                     <input type="text" placeholder="Enter your email address">
-                                    <button class="btn theme-btn" type="submit">subscribe now</button>
+                                    <button class="btn btn-danger" type="submit">subscribe now</button>
                                 </form>
                             </div>
                         </div>
@@ -259,6 +261,6 @@ use yii\helpers\Url;
             </div>
         </div>
     </section>
-    <!-- subscribe-area end -->
+
 </main>
 

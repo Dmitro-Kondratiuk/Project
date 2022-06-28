@@ -17,7 +17,7 @@ class ProductController extends  AppController
         if ($products  === null) { // item does not exist
             throw new \yii\web\HttpException(404, 'Упс , такого продутка у нас нету');
         }
-        $this->setMeta($products->category->name.' | ' .$products->name);
+        $this->setMeta($products->category->name.' | ' .$products->name,$products->keywords,$products->description);
         $sale = Product::find()->where(['sale'=>'1'])->all();
         $category = Category::findAll($id);
         $content = new Coment();

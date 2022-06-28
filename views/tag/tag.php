@@ -121,7 +121,7 @@
 //                                    ]);
 //                                    ?>
                                     <?php else :?>
-                                        <h2>Сори, товара с таким тэгом пока не существует (....</h2>
+                                        <h2><?=Yii::t('content','Сори, товара с таким тэгом пока не существует') ?></h2>
                                     <?php endif; ?>
                                 </div>
                             </div>
@@ -136,23 +136,14 @@
                     <div class="sidebar-shop">
 
                         <div class="shop-widget">
-                            <h3 class="shop-title">Search by</h3>
-                            <form action="#" class="shop-search">
-                                <input type="text" placeholder="Your keyword....">
+                            <h3 class="shop-title"><?= Yii::t('content','Поиск') ?></h3>
+                            <form action="<?= \yii\helpers\Url::to(['category/search']) ?>"  method="get" class="shop-search">
+                                <input type="text" placeholder="Your keyword...." name="q">
                                 <button><i class="fa fa-search"></i></button>
                             </form>
                         </div>
-
                         <div class="shop-widget">
-                            <h3 class="shop-title">Filter selection</h3>
-                            <div class="price-filter">
-                                <div id="slider-range"></div>
-                                <input type="text" id="amount">
-                            </div>
-                        </div>
-
-                        <div class="shop-widget">
-                            <h3 class="shop-title">Catergories</h3>
+                            <h3 class="shop-title"><?= Yii::t('content','Категории') ?></h3>
                             <ul class="shop-link">
                                 <?php foreach ($Category as $item):?>
                                     <li><a href="<?= \yii\helpers\Url::to(['/category/view','id'=>$item->id])?>"><i class="far fa-square"></i> <?= $item->name?></a></li>
@@ -161,7 +152,7 @@
                         </div>
 
                         <div class="shop-widget">
-                            <h3 class="shop-title">Tags</h3>
+                            <h3 class="shop-title"><?= Yii::t('content','Тэги')?></h3>
                             <ul class="shop-tag">
                                 <?php foreach($tags as $tag): ?>
                                 <li><a href="<?=\yii\helpers\Url::to(['/tag/tag','id'=>$tag->id])?>"> <?= $tag->name?></a></li>
@@ -170,19 +161,7 @@
                         </div>
 
                         <div class="shop-widget">
-                            <h3 class="shop-title">color</h3>
-                            <ul class="shop-link">
-                                <li><a href="shop.html"><span class="blue"></span> Blue</a></li>
-                                <li><a href="shop.html"><span class="green"></span> Green</a></li>
-                                <li><a href="shop.html"><span class="orange"></span> Orange</a></li>
-                                <li><a href="shop.html"><span class="navy"></span> Navy</a></li>
-                                <li><a href="shop.html"><span class="pinkish"></span> Pinkish</a></li>
-                                <li><a href="shop.html"><span class="vista"></span> Vista Blue</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="shop-widget">
-                            <h3 class="shop-title">Recent Product</h3>
+                            <h3 class="shop-title"><?=Yii::t('content','Последний продукт') ?></h3>
                             <ul class="shop-sidebar-product">
                                 <li>
                                     <div class="side-pro-img">

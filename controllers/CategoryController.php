@@ -47,7 +47,7 @@ class CategoryController extends AppController
         $id = Yii::$app->request->get('id');
         $category = Category::findOne($id);
         $Category = Category::find()->all();
-        $this->setMeta('K.O | ' . $category->name);
+        $this->setMeta('K.O | ' . $category->name,$category->keywords,$category->description);
         if ($category === null) { // item does not exist
             throw new \yii\web\HttpException(404, 'Упс , такой категории у нас нету');
         }

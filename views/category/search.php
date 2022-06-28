@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="breadcrumb-text text-center">
-                        <h3>Вот что мне удалось найти по запросу:  <?= \yii\helpers\Html::encode($q) ?></h3>
+                        <h3><?= Yii::t('content','Вот что мне удалось найти по запросу') ?>:  <?= \yii\helpers\Html::encode($q) ?></h3>
                         <ul class="breadcrumb-menu">
                             <li><a href="<?= \yii\helpers\Url::home() ?>">Главная</a></li>
                             <li><span>shop</span></li>
@@ -120,7 +120,7 @@
                                     ]);
                                     ?>
                                     <?php else :?>
-                                        <h2>Сори, ничего не получилось найти (....</h2>
+                                        <h2><?= Yii::t('content','Сори, ничего не получилось найти (....')?></h2>
                                     <?php endif; ?>
                                 </div>
                             </div>
@@ -135,14 +135,14 @@
                     <div class="sidebar-shop">
 
                         <div class="shop-widget">
-                            <h3 class="shop-title">Search by</h3>
+                            <h3 class="shop-title"><?= Yii::t('content','Поиск') ?></h3>
                             <form action="#" class="shop-search">
                                 <input type="text" placeholder="Your keyword....">
                                 <button><i class="fa fa-search"></i></button>
                             </form>
                         </div>
                         <div class="shop-widget">
-                            <h3 class="shop-title">Catergories</h3>
+                            <h3 class="shop-title"><?= Yii::t('content','Категории') ?></h3>
                             <ul class="shop-link">
                                 <?php foreach ($Category as $item):?>
                                     <li><a href="<?= \yii\helpers\Url::to(['/category/view','id'=>$item->id])?>"><i class="far fa-square"></i> <?= $item->name?></a></li>
@@ -151,7 +151,7 @@
                         </div>
 
                         <div class="shop-widget">
-                            <h3 class="shop-title">Tags</h3>
+                            <h3 class="shop-title"><?= Yii::t('content','Тэги')?></h3>
                             <ul class="shop-tag">
                                 <?php foreach($tags as $tag): ?>
                                 <li><a href="<?= \yii\helpers\Url::to(['/tag/tag','id'=>$tag->id]) ?>"><?= $tag->name ?></a></li>
@@ -160,7 +160,7 @@
                         </div>
 
                         <div class="shop-widget">
-                            <h3 class="shop-title">Recent Product</h3>
+                            <h3 class="shop-title"><?=Yii::t('content','Последний продукт') ?></h3>
                             <ul class="shop-sidebar-product">
                                 <li>
                                     <div class="side-pro-img">

@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="breadcrumb-text text-center">
-                        <h1>Contact Us</h1>
+                        <h1><?= Yii::t('common','Свяжитесь с нами') ?></h1>
                         <ul class="breadcrumb-menu">
                             <li><a href="<?= \yii\helpers\Url::home()?>">home</a></li>
                             <li><span>Contact</span></li>

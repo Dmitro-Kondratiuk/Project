@@ -72,7 +72,7 @@ class Blog extends \yii\db\ActiveRecord
         ];
     }
     public function getCategory(){
-        return $this->hasOne(CategoryBlog::class,['id'=>'category_id']);
+        return $this->hasMany(CategoryBlog::class,['id'=>'category_id']);
     }
     public function getBlogTag(){
         return $this->hasMany(BlogTag::class,['blog_id'=>'id']);

@@ -2,17 +2,21 @@
 use yii\helpers\Url;
 ?>
 <main>
-<?php debug($customers->category);?>
+<?php
+//foreach ($customers as $item){
+//    debug($item->category);
+//}
+//?>
     <!-- breadcrumb-area-start -->
     <section class="breadcrumb-area" data-background="img/bg/page-title.png">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12"
                     <div class="breadcrumb-text text-center">
-                        <h1>Blog</h1>
+                        <h1><?= Yii::t('common','Блог')?></h1>
                         <ul class="breadcrumb-menu">
-                            <li><a href="<?= Url::home()?>">home</a></li>
-                            <li><span>Blog</span></li>
+                            <li><a href="<?= Url::home()?>"><?= Yii::t('common','На главную')?></a></li>
+                            <li><span><?= Yii::t('common','Блог')?></span></li>
                         </ul>
                     </div>
                 </div>
@@ -166,7 +170,7 @@ use yii\helpers\Url;
                     <div class="widget mb-40">
                         <div class="widget-title-box mb-30">
                             <span class="animate-border"></span>
-                            <h3 class="widget-title">Search Objects</h3>
+                            <h3 class="widget-title"><?=  Yii::t('common','Поиск по названию блога')?></h3>
                         </div>
                         <form class="search-form" method="get"  action=" <?= \yii\helpers\Url::to(['blog/search']) ?>">
                             <input type="text" name="q" placeholder="Search">
@@ -176,7 +180,7 @@ use yii\helpers\Url;
                     <div class="widget mb-40">
                         <div class="widget-title-box mb-30">
                             <span class="animate-border"></span>
-                            <h3 class="widget-title">About Me</h3>
+                            <h3 class="widget-title"><?=Yii::t('common','Обо мне') ?></h3>
                         </div>
                         <div class="about-me text-center">
                             <img src="/img/blogs/details/me.png" alt="">
@@ -195,7 +199,7 @@ use yii\helpers\Url;
                     <div class="widget mb-40">
                         <div class="widget-title-box mb-30">
                             <span class="animate-border"></span>
-                            <h3 class="widget-title">Popular Feeds</h3>
+                            <h3 class="widget-title"><?= Yii::t('common','Популярные каналы') ?></h3>
                         </div>
                         <ul class="recent-posts">
                             <li>
@@ -233,10 +237,10 @@ use yii\helpers\Url;
                     <div class="widget mb-40">
                         <div class="widget-title-box mb-30">
                             <span class="animate-border"></span>
-                            <h3 class="widget-title">Categories</h3>
+                            <h3 class="widget-title"><?= Yii::t('common','Категории')?></h3>
                         </div>
                         <ul class="cat">
-                            <?php foreach ($customers as $item): ?>
+                            <?php foreach ($category as $item): ?>
                             <li>
                                 <?php if(!empty($item->id)): ?>
                                 <a href="<?=\yii\helpers\Url::to(['blog/category','id'=>$item->id]) ?>"><?= $item->name ?><span class="f-right"></span></a>
@@ -244,12 +248,13 @@ use yii\helpers\Url;
                                 <?php endif; ?>
                             </li>
                             <?php endforeach; ?>
+
                         </ul>
                     </div>
                     <div class="widget mb-40">
                         <div class="widget-title-box mb-30">
                             <span class="animate-border"></span>
-                            <h3 class="widget-title">Social Profile</h3>
+                            <h3 class="widget-title"><?= Yii::t('common','Социальный профиль') ?></h3>
                         </div>
                         <div class="social-profile">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -259,17 +264,11 @@ use yii\helpers\Url;
                             <a href="#"><i class="fab fa-youtube"></i></a>
                         </div>
                     </div>
+
                     <div class="widget mb-40">
                         <div class="widget-title-box mb-30">
                             <span class="animate-border"></span>
-                            <h3 class="widget-title">Instagram Feeds</h3>
-                        </div>
-                        <ul id="Instafeed"></ul>
-                    </div>
-                    <div class="widget mb-40">
-                        <div class="widget-title-box mb-30">
-                            <span class="animate-border"></span>
-                            <h3 class="widget-title">Instagram Feeds</h3>
+                            <h3 class="widget-title"><?= Yii::t('common','Ленты Instagram')?></h3>
                         </div>
                         <div class="tag">
                             <a href="#">Popular</a>

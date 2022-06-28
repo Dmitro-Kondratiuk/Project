@@ -117,7 +117,7 @@
                                     ]);
                                     ?>
                                     <?php else :?>
-                                        <h2>По данной категории продутов не найдено</h2>
+                                        <h2><?= Yii::t('content','По данной категории продутов не найдено')?></h2>
                                     <?php endif; ?>
                                 </div>
                             </div>
@@ -181,7 +181,7 @@
                     <div class="sidebar-shop">
 
                         <div class="shop-widget">
-                            <h3 class="shop-title">Search by</h3>
+                            <h3 class="shop-title"><?= Yii::t('content','Поиск') ?></h3>
                             <form action="#" class="shop-search">
                                 <input type="text" placeholder="Your keyword....">
                                 <button><i class="fa fa-search"></i></button>
@@ -189,7 +189,7 @@
                         </div>
 
                         <div class="shop-widget">
-                            <h3 class="shop-title">Catergories</h3>
+                            <h3 class="shop-title"><?= Yii::t('content','Категории') ?></h3>
                             <ul class="shop-link">
                                 <?php foreach ($Category as $item):?>
                                     <li><a href="<?= \yii\helpers\Url::to(['/category/view','id'=>$item->id])?>"><i class="far fa-square"></i> <?= $item->name?></a></li>
@@ -198,16 +198,16 @@
                         </div>
 
                         <div class="shop-widget">
-                            <h3 class="shop-title">Tags</h3>
+                            <h3 class="shop-title"><?= Yii::t('content','Тэги')?></h3>
                             <ul class="shop-tag">
                                 <?php foreach($tags as $tag): ?>
-                                <li><a href="<?=\yii\helpers\Url::to(['tag/tag'.'id'=>$tag->id])?>"><?=$tag->name ?></a></li>
+                                <li><a href="<?=\yii\helpers\Url::to(['tag/tag','id'=>$tag->id])?>"><?=$tag->name ?></a></li>
                                 <?php endforeach; ?>
                             </ul>
                         </div>
 
                         <div class="shop-widget">
-                            <h3 class="shop-title">Recent Product</h3>
+                            <h3 class="shop-title"><?=Yii::t('content','Последний продукт') ?></h3>
                             <ul class="shop-sidebar-product">
                                 <li>
                                     <div class="side-pro-img">

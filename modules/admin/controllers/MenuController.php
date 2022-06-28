@@ -2,19 +2,16 @@
 
 namespace app\modules\admin\controllers;
 
-use app\models\Product;
-use app\modules\admin\models\Order;
+use app\modules\admin\models\Menu;
 use yii\data\ActiveDataProvider;
-use yii\data\Pagination;
-use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * OrderController implements the CRUD actions for Order model.
+ * MenuController implements the CRUD actions for Menu model.
  */
-class OrderController extends Controller
+class MenuController extends Controller
 {
     /**
      * @inheritDoc
@@ -23,20 +20,7 @@ class OrderController extends Controller
     {
         return array_merge(
             parent::behaviors(),
-            [            'access' => [
-                'class' => AccessControl::class,
-                'rules' => [
-                    [
-                        'actions' => ['login', 'error'],
-                        'allow' => true,
-                    ],
-                    [
-                        'actions' => ['index','create','view','update','delete','search'],
-                        'allow' => true,
-                        'roles' => ['canAdmin'],
-                    ],
-                ],
-            ],
+            [
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
@@ -48,21 +32,21 @@ class OrderController extends Controller
     }
 
     /**
-     * Lists all Order models.
+     * Lists all Menu models.
      *
      * @return string
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Order::find(),
+            'query' => Menu::find(),
 
             'pagination' => [
-                'pageSize' =>10
+                'pageSize' => 10
             ],
             'sort' => [
                 'defaultOrder' => [
-                    'id' => SORT_DESC,
+                    'id' => SORT_ASC,
                 ]
             ],
 
@@ -74,8 +58,8 @@ class OrderController extends Controller
     }
 
     /**
-     * Displays a single Order model.
-     * @param int $id Номер заказа
+     * Displays a single Menu model.
+     * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -87,13 +71,13 @@ class OrderController extends Controller
     }
 
     /**
-     * Creates a new Order model.
+     * Creates a new Menu model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Order();
+        $model = new Menu();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -109,9 +93,9 @@ class OrderController extends Controller
     }
 
     /**
-     * Updates an existing Order model.
+     * Updates an existing Menu model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $id Номер заказа
+     * @param int $id ID
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -129,9 +113,9 @@ class OrderController extends Controller
     }
 
     /**
-     * Deletes an existing Order model.
+     * Deletes an existing Menu model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $id Номер заказа
+     * @param int $id ID
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -143,28 +127,18 @@ class OrderController extends Controller
     }
 
     /**
-     * Finds the Order model based on its primary key value.
+     * Finds the Menu model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $id Номер заказа
-     * @return Order the loaded model
+     * @param int $id ID
+     * @return Menu the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Order::findOne(['id' => $id])) !== null) {
+        if (($model = Menu::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
-    }
-    public function actionSearch(){
-        $q = trim(\Yii::$app->request->get('q'));
-        if(!$q)
-            return $this->render('search');
-        $query = Product::find()->where(['like','name',$q]);
-        $pages = new Pagination(['totalCount'=>$query->count(),'pageSize'=>10,'forcePageParam'=>false,
-            'pageSizeParam'=> false]);
-        $products = $query->offset($pages->offset)->limit($pages->limit)->all();
-        return $this->render('search',compact('products','query','pages','q'));
     }
 }

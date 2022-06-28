@@ -179,8 +179,8 @@ li {
 p {
     font-size: 14px;
     font-weight: normal;
-    line-height: 26px;
-    color: #7e7e7e;
+    /*line-height: 26px;*/
+    /*color: #7e7e7e;*/
     margin-bottom: 15px;
 }
 
@@ -5182,6 +5182,10 @@ ul.cat li a:hover {
         opacity: 0;
     }
 }
+.image_small_admin{
+    width: 25px;
+    height : 25px
 
+}
 
 /*--- end of preloader ---*/

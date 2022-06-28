@@ -62,6 +62,7 @@ public function getProduct(){
             'username' => 'Имя',
             'email' => 'E-mail',
             'coment' => 'Отзыв',
+            'product_id'=>'Имя товара'
         ];
     }
 

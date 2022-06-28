@@ -1,21 +1,36 @@
 <aside class="main-sidebar">
-
+    <?php  if(!empty(\app\modules\admin\models\Info::find()->where(['user_id' => Yii::$app->user->id])->one())):  ?>
+    <?php $user = \app\modules\admin\models\Info::find()->where(['user_id' => Yii::$app->user->id])->one() ?>
     <section class="sidebar">
-
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
+                    <?= \yii\helpers\Html::img("@web/upload/user_logo/{$user->image}") ?>
             </div>
             <div class="pull-left info">
-                <p><?= Yii::$app->user->identity->username ?></p>
-
+                <p><?= $user->name?> <?= $user->last_name?></p>
+                <p class="text-danger"><?= \Yii::$app->user->identity->username ?></p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
+<?php else: ?>
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <?= \yii\helpers\Html::img("@web/upload/user_logo/no-image.png") ?>
+                </div>
+                <div class="pull-left info">
 
+                    <p><?= \Yii::$app->user->identity->username ?></p>
+
+                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                </div>
+            </div>
+            <?php endif; ?>
         <!-- search form -->
-        <form action="#" method="get" class="sidebar-form">
+
+        <form action="<?= \yii\helpers\Url::to(['/admin/order/search/']) ?>" method="get" class="sidebar-form">
             <div class="input-group">
                 <input type="text" name="q" class="form-control" placeholder="Search..."/>
               <span class="input-group-btn">
@@ -32,6 +47,7 @@
                 'items' => [
                     ['label' => 'Menu Shop', 'options' => ['class' => 'header']],
                     ['label' => 'Order', 'icon' => 'archive', 'url' => ['/admin/order']],
+                    ['label' => 'Menu', 'icon' => 'bars', 'url' => ['/admin/menu/index']],
                     ['label' => 'Contact', 'icon' => 'asterisk', 'url' => ['/admin/contact']],
                     ['label' => 'Coment', 'icon' => 'asterisk', 'url' => ['/admin/coment']],
                     ['label' => 'BlogComent', 'icon' => 'dashboard', 'url' => ['/admin/comentary']],
@@ -83,6 +99,7 @@
 //                            ],
                         ],
                     ],
+                    ['label' => 'Date_User', 'icon' => 'file-code-o', 'url' => ['//admin/info/']],
                     ['label' => 'Обратно на сайт ', 'icon' => 'dashboard', 'url' => ['/']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                 ],

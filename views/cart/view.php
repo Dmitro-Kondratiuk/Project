@@ -105,7 +105,7 @@ use yii\widgets\ActiveForm;
                                     <ul class="mb-20">
                                         <li>Total <span><?= $session['cart.sum']?>$</span></li>
                                     </ul>
-                                    <a class="btn theme-btn" href="#">Proceed to checkout</a>
+                                    <a class="btn btn-primary" href="#">Proceed to checkout</a>
                                 </div>
                             </div>
                         </div>

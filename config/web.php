@@ -5,9 +5,10 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+    'language' =>'ru',
+    'sourceLanguage'=>'ru',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'language' =>'ru-Ru',
     'defaultRoute'=>'category/index',
     'modules' => [
         'treemanager' =>  [
@@ -76,6 +77,9 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'class' => 'codemix\localeurls\UrlManager',
+            'languages' => ['ru','en'],
+            'enableDefaultLanguageUrlCode'=>true,
             'rules' => [
                 'category/<id:\d+>/page/<page:\d+>'=>'category/view',
                 'category/<id:\d+>'=>'category/view',
@@ -85,6 +89,18 @@ $config = [
                 'tag/<id:\d+>'=>'tag/tag',
                 'cart/<id:\d+>'=>'cart/add',
                 'search'=>'category/search'
+            ],
+        ],
+        'i18n'=>[
+            'translations'=>[
+                'common*'=>[
+                    'class'=>'yii\i18n\PhpMessageSource',
+                    'basePath'=>'@app/messages'
+                ],
+                'content*'=>[
+                    'class'=>'yii\i18n\PhpMessageSource',
+                    'basePath'=>'@app/messages'
+                ],
             ],
         ],
 
@@ -110,6 +126,10 @@ $config = [
         ]
     ],
     'params' => $params,
+    'on beforeAction'=> function($event){
+    $model= \app\modules\admin\models\Menu::find()->with('children.children.children')->one();
+    Yii::$app->params['menu'] = $model->getTree();
+    }
 ];
 
 if (YII_ENV_DEV) {
