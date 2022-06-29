@@ -41,7 +41,9 @@
                                 <p><?= $one->small_content?></p>
                             </div>
                             <div class="read-more">
-                                <a href="<?= \yii\helpers\Url::to(['/blog/view','id'=>$one->id])?>" class="read-more">read more <i class="flaticon-right-arrow"></i></a>
+                                <a href="<?= \yii\helpers\Url::to(['/blog/view','id'=>$one->id])?>" class="read-more">
+                                    <?=Yii::t('common','Читать далее')?>
+                                    <i class="flaticon-right-arrow"></i></a>
                             </div>
                         </div>
                     </article>

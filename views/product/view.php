@@ -130,7 +130,7 @@ use yii\helpers\Url;
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="profile-tab6" data-toggle="tab" href="#profile6" role="tab" aria-controls="profile"
-                                   aria-selected="false"><?= Yii::t('common','Коментарий') ?></a>
+                                   aria-selected="false"><?= Yii::t('common','Коментарии') ?></a>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent2">
@@ -166,26 +166,8 @@ use yii\helpers\Url;
                                     <?php endforeach; ?>
                                     </div>
                                     <div class="review-box mt-50">
-                                        <h4>Add a Review</h4>
+                                        <h4><?=Yii::t('common','Добавить коменткарий') ?></h4>
                                         <div class="your-rating mb-40">
-                                            <span>Your Rating:</span>
-                                            <div class="rating-list">
-                                                <a href="#">
-                                                    <i class="far fa-star"></i>
-                                                </a>
-                                                <a href="#">
-                                                    <i class="far fa-star"></i>
-                                                </a>
-                                                <a href="#">
-                                                    <i class="far fa-star"></i>
-                                                </a>
-                                                <a href="#">
-                                                    <i class="far fa-star"></i>
-                                                </a>
-                                                <a href="#">
-                                                    <i class="far fa-star"></i>
-                                                </a>
-                                            </div>
                                         </div>
                                         <?php  $form = \yii\widgets\ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']])?>
                                             <div class="row">
@@ -208,7 +190,9 @@ use yii\helpers\Url;
                                                     <?php if(Yii::$app->user->isGuest): ?>
                                                         <a href="<?= \yii\helpers\Url::to(['site/login'])?>" class="btn bg-info text-white container" >Зарегистрироваться</a>
                                                     <?php else:?>
-                                                        <button class="btn bg-success text-white container" type="submit">Отправить контактную форму </button>
+                                                        <button class="btn bg-success text-white container" type="submit">
+                                                            <?= Yii::t('common','Оставить коментарий')?>
+                                                        </button>
                                                     <?php endif; ?>
                                                 </div>
                                             </div>

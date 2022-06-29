@@ -59,10 +59,10 @@ public function getProduct(){
     {
         return [
             'id' => 'ID',
-            'username' => 'Имя',
-            'email' => 'E-mail',
-            'coment' => 'Отзыв',
-            'product_id'=>'Имя товара'
+            'username' => Yii::t('common','Имя'),
+            'email' => Yii::t('common','E-mail'),
+            'coment' => Yii::t('common','Отзыв'),
+            'product_id'=>Yii::t('common','Имя товара'),
         ];
     }
 

@@ -64,11 +64,11 @@ class Contact extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'your_name' => 'Your Name',
-            'your_phone' => 'Your Phone',
-            'your_email' => 'Your Email',
-            'your_subject' => 'Your Subject',
-            'your_message' => 'Your Message',
+            'your_name' => Yii::t('common','Ваше имя'),
+            'your_phone' => Yii::t('common','Ваш телефон'),
+            'your_email' => Yii::t('common','Ваш E-mail'),
+            'your_subject' => Yii::t('common','Ваша тема'),
+            'your_message' => Yii::t('common','Ваше сообщение'),
             'status' => 'Status',
             'created_at' => 'Created At',
         ];

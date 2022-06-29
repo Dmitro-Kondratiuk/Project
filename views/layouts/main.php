@@ -39,9 +39,7 @@ AppAsset::register($this);
 
 <!-- header start -->
 <header>
-<!--    <ul class="catalog">-->
-<!--    --><?//= \app\components\MenuWidget::widget(['tpl'=>'menu']) ?>
-<!--    </ul>-->
+
     <div id="header-sticky" class="header-area box-90">
         <div class="container-fluid">
             <div class="row align-items-center">
@@ -58,7 +56,6 @@ AppAsset::register($this);
                     <div class="category-menu">
                         <h4>Category</h4>
                         <ul>
-<!--                            --><?//= \app\components\MenuWidget::widget(['tpl'=>'menu']) ?>
                             <?php foreach (Yii::$app->params['menu'] as $id=>$item): ?>
                             <li><a href="<?= $item['url']?>"><i class="flaticon-shopping-cart-1"></i> <?= $item['title'] ?></a></li>
                             <?php if(!empty($item['items'])): ?>
@@ -66,6 +63,7 @@ AppAsset::register($this);
                                 <li><a href="<?=$one['url']?>"><i class="fa fa-space-shuttle"></i> <?= $one['title'] ?></a></li>
                                 <?php endif;?>
                             <?php endforeach; ?>
+                            <?= $this->render('language')?>
                         </ul>
                     </div>
                 </div>

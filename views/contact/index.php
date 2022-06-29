@@ -22,8 +22,12 @@
                     <div class="breadcrumb-text text-center">
                         <h1><?= Yii::t('common','Свяжитесь с нами') ?></h1>
                         <ul class="breadcrumb-menu">
-                            <li><a href="<?= \yii\helpers\Url::home()?>">home</a></li>
-                            <li><span>Contact</span></li>
+                            <li><a href="<?= \yii\helpers\Url::home()?>">
+                                    <?= Yii::t('common','На главную')?>
+                                    </a></li>
+                            <li><span>
+                                    <?=Yii::t('common','Контакты') ?>
+                                </span></li>
                         </ul>
                     </div>
                 </div>
@@ -72,13 +76,14 @@
                 <div class="row align-items-center">
                     <div class="col-xl-8 col-lg-8">
                         <div class="section-title mb-55">
-                            <p><span></span> Anything On your Mind</p>
-                            <h1>Estimate Your Idea</h1>
+                            <h1><?= Yii::t('common','Свяжитесь с нами через форму которая находиться ниже')?></h1>
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-3 d-none d-xl-block ">
                         <div class="section-link mb-80 text-right">
-                            <a class="btn text-success" href="tel:+380671406238"><i class="fas fa-phone"></i> make call</a>
+                            <a class="btn text-success" href="tel:+380671406238"><i class="fas fa-phone"></i>
+                                <?= Yii::t('common','Позвонить')?>
+                                </a>
                         </div>
                     </div>
                 </div>
@@ -87,22 +92,22 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-box user-icon mb-30">
-                                <?= $form->field($contact,'your_name')->textInput(['placeholder'=>"Введите свое имя"])?>
+                                <?= $form->field($contact,'your_name')->textInput(['placeholder'=>Yii::t('common','Введите свое имя')])?>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-box email-icon mb-30">
-                               <?= $form->field($contact,'your_phone')->textInput(['placeholder'=>"Введите свой номер телефона"])?>
+                               <?= $form->field($contact,'your_phone')->textInput(['placeholder'=>Yii::t('common','Введите свой номер телефона')])?>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-box phone-icon mb-30">
-                                <?= $form->field($contact,'your_email')->textInput(['placeholder' => "Введите свой  E-mail"])?>
+                                <?= $form->field($contact,'your_email')->textInput(['placeholder' =>Yii::t('common','Введите свой  E-mail')])?>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-box subject-icon mb-30">
-                                <?= $form->field($contact,'your_subject')->textInput(['placeholder'=>'Введите тему вашего обращения'])?>
+                                <?= $form->field($contact,'your_subject')->textInput(['placeholder'=>Yii::t('common','Введите тему вашего обращения')])?>
                             </div>
                         </div>
                         <div class="col-lg-12">
@@ -112,14 +117,14 @@
                                         'preset' => 'basic', //разработанны стандартные настройки basic, standard, full данную возможность не обязательно использовать
                                         'inline' => false, //по умолчанию false
                                     ],
-                                ])->textInput(  ['placeholder'=>'Введите текст'])
+                                ])->textInput(  ['placeholder'=>Yii::t('common','Введите текст')])
                                 ?>
 
                             <div class="contact-btn text-center">
                                 <?php if(Yii::$app->user->isGuest): ?>
                                 <a href="<?= \yii\helpers\Url::to(['site/login'])?>" class="btn bg-info text-white" >Зарегистрироваться</a>
                                 <?php else:?>
-                                <button class="btn bg-success text-white" type="submit">Отправить контактную форму </button>
+                                <button class="btn bg-success text-white" type="submit"><?= Yii::t('common','Отправить контактную форму') ?></button>
                                 <?php endif; ?>
                             </div>
                         </div>
