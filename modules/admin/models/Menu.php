@@ -2,8 +2,6 @@
 
 namespace app\modules\admin\models;
 use paulzi\adjacencyList\AdjacencyListBehavior;
-use paulzi\adjacencyList\AdjacencyListQueryTrait;
-use Yii;
 use yii\helpers\ArrayHelper;
 
 /**

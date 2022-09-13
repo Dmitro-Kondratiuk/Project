@@ -49,7 +49,7 @@ class Blog extends \yii\db\ActiveRecord
 
     public function getBlogComent()
     {
-        return $this->hasMany(BlogComent::className(), ['id' => 'blog_id']);
+        return $this->hasMany(BlogComent::class, ['id' => 'blog_id']);
     }
 
     /**

@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'last_name')->textarea(['rows' => 1]) ?>
 
-    <?= $form->field($model, 'email')->textarea(['rows' => 1]) ?>
+    <?= $form->field($model, 'email')->textarea([ 'placeholder' => "",'class' => 'form-control']) ?>
     <?=  $form->field($model, 'file')->widget(\kartik\file\FileInput::class, [
         'pluginOptions' => [
             'initialPreview' =>$model->ImageLik,

@@ -1,6 +1,5 @@
 
 <main>
-
     <!-- breadcrumb-area-start -->
     <section class="breadcrumb-area" data-background="/img/bg/page-title.png">
         <div class="container">
@@ -33,7 +32,7 @@
                     <div class="row mb-10">
                         <div class="col-xl-5 col-lg-6 col-md-6">
                             <div class="product-showing mb-40">
-                                <p> <?= count($products)?> results</p>
+<!--                                <p> --><?//= count($query)?><!-- results</p>-->
                             </div>
                         </div>
                         <div class="col-xl-7 col-lg-6 col-md-6">
@@ -93,11 +92,7 @@
                                                 <a href="shop.html">furniture</a>
                                             </div>
                                             <h4>
-                                                <?php if(Yii::$app->user->isGuest): ?>
-                                                <a href="<?= \yii\helpers\Url::to(['site/login'])?>">Авторизироваться</a>
-                                                <?php else: ?>
                                                 <a href="<?= \yii\helpers\Url::to(['product/view','id'=>$product->id]) ?>"><?= $product->name ?></a>
-                                                <?php endif; ?>
                                             </h4>
                                             <div class="product-meta">
                                                 <div class="pro-price">
@@ -182,9 +177,9 @@
 
                         <div class="shop-widget">
                             <h3 class="shop-title"><?= Yii::t('content','Поиск') ?></h3>
-                            <form action="#" class="shop-search">
-                                <input type="text" placeholder="Your keyword....">
-                                <button><i class="fa fa-search"></i></button>
+                            <form method="get" action="<?= \yii\helpers\Url::to(['/category/search'])?>" class="shop-search">
+                                <input type="text" placeholder="Your keyword...." name="q">
+                                <button><i class="fa fa-search" ></i></button>
                             </form>
                         </div>
 

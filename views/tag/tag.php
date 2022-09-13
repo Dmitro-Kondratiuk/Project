@@ -87,6 +87,8 @@
                                                         <a href="<?= \yii\helpers\Url::to(['/site/login'])?>"><i class="far fa-user"></i></a></li>
                                                     <?php else: ?>
                                                     <a href="<?= \yii\helpers\Url::to(['cart/add','id'=>$product->id])?>" title="Shoppingb Cart" data-id="<?=$product->id?>">
+                                                        <i class="flaticon-shopping-cart"></i>
+                                                    </a>
                                                         <?php endif;?>
                                                     <a href="<?= \yii\helpers\Url::to(['product/view','id'=>$product->id]) ?>" title="Quick View">
                                                         <i class="flaticon-eye"></i>

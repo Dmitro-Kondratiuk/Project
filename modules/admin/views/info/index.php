@@ -14,7 +14,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="info-index">
 
-
     <?php if(Yii::$app->user->can('admin')): ?>
     <p>
         <?= Html::a('Create Info', ['create'], ['class' => 'btn btn-success']) ?>

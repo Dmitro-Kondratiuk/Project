@@ -24,6 +24,9 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+    <div>
+        <a href="<?=str_replace('admin','',\yii\helpers\Url::home(true)).'/product/'.$model->id;?>">Посмотреть продукт на сайте</a>
+    </div>
     <?php  endif; ?>
     <?= DetailView::widget([
         'model' => $model,
@@ -85,7 +88,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     if($new->top_sale == 1){
                         $st = "<span class='text-primary'>Топ продаж</span>";
                     }else{
-                        $st = "<span></span>";
+                        $st = "<span class='text-aqua'>Этот товар пока что не находиться в списке топ распродаж</span>";
                     }
                     return $st;
                 },

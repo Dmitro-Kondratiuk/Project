@@ -25,11 +25,11 @@ use mihaildev\elfinder\ElFinder;
 <!--    --><?//= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
 
     <?=
-    $form->field($model, 'content')->widget(CKEditor::className(), [
+    $form->field($model, 'content')->widget(CKEditor::class, [
         'editorOptions' => ElFinder::ckeditorOptions('elfinder'),
     ]);
     ?>
-    <?= $form->field($model, 'small_content')->widget(CKEditor::className(),[
+    <?= $form->field($model, 'small_content')->widget(CKEditor::class,[
         'editorOptions' => [
             'preset' => 'basic', //разработанны стандартные настройки basic, standard, full данную возможность не обязательно использовать
             'inline' => false, //по умолчанию false
@@ -65,7 +65,7 @@ use mihaildev\elfinder\ElFinder;
     <?= $form->field($model, 'sale')->CheckBox([ '0', '1', ]) ?>
     <?= $form->field($model, 'top_sale')->CheckBox([ '0', '1', ]) ?>
     <?=
-    $form->field($model, 'tag_array')->widget(\kartik\select2\Select2::classname(), [
+    $form->field($model, 'tag_array')->widget(\kartik\select2\Select2::class, [
         'data' => \yii\helpers\ArrayHelper::map(\app\models\Tag::find()->all(),'id','name'),
         'language' => 'ru',
         'options' => ['placeholder' => 'Выбирете Тэг','multiple' => true],
@@ -110,7 +110,5 @@ use mihaildev\elfinder\ElFinder;
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
     <?php ActiveForm::end(); ?>
-<?php //debug($model->productImg) ?>
 
 </div>
-<?php //debug(\yii\helpers\ArrayHelper::map(\app\models\Tag::find()->all(),'id','name')); ?>

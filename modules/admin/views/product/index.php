@@ -74,7 +74,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'count',
 
             [
-                'class' => ActionColumn::className(),
+                'class' => ActionColumn::class,
                 'urlCreator' => function ($action, \app\modules\admin\models\Product $model, $key, $index, $column) {
                    return  Url::toRoute([$action, 'id' => $model->id]);
                 }

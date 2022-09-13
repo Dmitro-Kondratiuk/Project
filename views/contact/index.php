@@ -112,7 +112,7 @@
                         </div>
                         <div class="col-lg-12">
 
-                                <?= $form->field($contact, 'your_message')->widget(\mihaildev\ckeditor\CKEditor::className(),[
+                                <?= $form->field($contact, 'your_message')->widget(\mihaildev\ckeditor\CKEditor::class,[
                                     'editorOptions' => [
                                         'preset' => 'basic', //разработанны стандартные настройки basic, standard, full данную возможность не обязательно использовать
                                         'inline' => false, //по умолчанию false

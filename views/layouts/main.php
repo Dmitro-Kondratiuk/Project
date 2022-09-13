@@ -20,6 +20,7 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <?php $this->registerCsrfMetaTags() ?>
+<!--    --><?php //Yii::$app->view->registerLinkTag(['rel' => 'icon', 'type' => 'image/png', 'href' => \yii\helpers\Url::to(['/icons8-звезда-48.png'])]);?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
@@ -54,13 +55,14 @@ AppAsset::register($this);
                     </div>
 
                     <div class="category-menu">
-                        <h4>Category</h4>
+                        <h4><?= Yii::t('common','Категория')?></h4>
                         <ul>
                             <?php foreach (Yii::$app->params['menu'] as $id=>$item): ?>
-                            <li><a href="<?= $item['url']?>"><i class="flaticon-shopping-cart-1"></i> <?= $item['title'] ?></a></li>
+                            <li><a href="<?= \yii\helpers\Url::to($item['url'])?>"><i class="flaticon-shopping-cart-1"></i> <?= $item['title'] ?></a></li>
                             <?php if(!empty($item['items'])): ?>
                             <?php foreach ($item['items'] as $one) ?>
-                                <li><a href="<?=$one['url']?>"><i class="fa fa-space-shuttle"></i> <?= $one['title'] ?></a></li>
+                                <li><a href="<?=\yii\helpers\Url::to($one['url'])
+                                    ?>"><i class="fa fa-space-shuttle"></i> <?= $one['title'] ?></a></li>
                                 <?php endif;?>
                             <?php endforeach; ?>
                             <?= $this->render('language')?>

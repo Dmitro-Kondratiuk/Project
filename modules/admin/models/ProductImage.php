@@ -59,7 +59,7 @@ class ProductImage extends \yii\db\ActiveRecord
         if($this->name){
             $path = str_replace('admin','',Url::home(true)).'/upload/product/'.$this->name;
         }else{
-            $path = ' ';
+            $path = '';
         }
         return $path;
     }

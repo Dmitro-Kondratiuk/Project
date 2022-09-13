@@ -3,7 +3,7 @@
 
 ?>
 <main>
-    <?//= debug($cat)?>
+
     <!-- breadcrumb-area-start -->
     <section class="breadcrumb-area" data-background="/img/bg/page-title.png">
         <div class="container">
@@ -136,8 +136,8 @@
 
                         <div class="shop-widget">
                             <h3 class="shop-title"><?= Yii::t('content','Поиск') ?></h3>
-                            <form action="#" class="shop-search">
-                                <input type="text" placeholder="Your keyword....">
+                            <form action="<?= \yii\helpers\Url::to(['category/search'])?>" class="shop-search">
+                                <input type="text" placeholder="Your keyword...." name = "q">
                                 <button><i class="fa fa-search"></i></button>
                             </form>
                         </div>

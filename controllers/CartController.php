@@ -18,7 +18,7 @@ class CartController extends  AppController
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'only' => ['logout'],
                 'rules' => [
                     [
@@ -29,7 +29,7 @@ class CartController extends  AppController
                 ],
             ],
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'logout' => ['post','get'],
                 ],
@@ -88,11 +88,11 @@ class CartController extends  AppController
            if($order->save()){
                $this->saveOrderItems($session['cart'],$order->id);
                Yii::$app->session->setFlash('success','Ваш заказ принят,спасибо что выбрали нас');
-               Yii::$app->mailer->compose('order', compact('session'))
-                   ->setFrom('kondratyuk.mitya@gmail.com')
-                   ->setTo($order->email)
-                   ->setSubject('Ваш заказ')
-                   ->send();
+//               Yii::$app->mailer->compose('order', compact('session'))
+//                   ->setFrom('kondratyuk.mitya@gmail.com')
+//                   ->setTo($order->email)
+//                   ->setSubject('Ваш заказ')
+//                   ->send();
                $session->remove('cart');
                $session->remove('cart.qty');
                $session->remove('cart.sum');

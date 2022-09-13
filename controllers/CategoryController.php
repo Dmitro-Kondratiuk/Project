@@ -43,22 +43,29 @@ class CategoryController extends AppController
         $top_sale= Product::find()->with('saleImg')->where(['top_sale'=>'1'])->one();
         return $this->render('index',compact('hits','news','top_sale'));
     }
-    public function actionView(){
+    public function actionView()
+    {
         $id = Yii::$app->request->get('id');
         $category = Category::findOne($id);
         $Category = Category::find()->all();
-        $this->setMeta('K.O | ' . $category->name,$category->keywords,$category->description);
+        $this->setMeta('K.O | ' . $category->name, $category->keywords, $category->description);
         if ($category === null) { // item does not exist
             throw new \yii\web\HttpException(404, 'Упс , такой категории у нас нету');
         }
-       // $products = Product::find()->where(['category_id'=>$id])->all();
-        $query = Product::find()->where(['category_id'=>$id]);
-        $pages = new Pagination(['totalCount'=>$query->count(),'pageSize'=>3,'forcePageParam'=>false,
-            'pageSizeParam'=> false]);
+        $children = Category::find()->where(['parent_id' => $category->id])->all();
+        $ids = [$category->id];
+        if ($children) {
+            foreach ($children as $value) {
+                $ids[] = $value->id;
+            }
+        }
+        $query = Product::find()->where(['category_id' => $ids])->select(['name','image','price','old_price','id','new','sale']);
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 6, 'forcePageParam' => false,
+            'pageSizeParam' => false]);
         $products = $query->offset($pages->offset)->limit($pages->limit)->all();
         $cat = Category::findAll($id);
         $tags = Tag::find()->all();
-        return $this->render('view',compact('products','category','cat','pages','Category','tags'));
+        return $this->render('view',compact('products','category','cat','pages','Category','tags','children','query'));
     }
     public function actionSearch(){
         $q = trim(Yii::$app->request->get('q'));

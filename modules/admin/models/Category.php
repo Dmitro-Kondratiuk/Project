@@ -28,7 +28,7 @@ class Category extends \yii\db\ActiveRecord
         return 'category';
     }
     public function getCategory(){
-        return $this->hasOne(Category::className(),['id'=>'parent_id']);
+        return $this->hasOne(Category::class,['id'=>'parent_id']);
     }
 
     /**
@@ -55,7 +55,7 @@ class Category extends \yii\db\ActiveRecord
             'name' => 'Имя',
             'keywords' => 'Ключевые слова',
             'description' => 'Мета-Описание',
-            'img' => 'Картинка',
+            'image' => 'Картинка',
         ];
     }
     public function beforeSave($insert)

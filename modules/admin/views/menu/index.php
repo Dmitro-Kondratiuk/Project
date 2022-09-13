@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]); ?>
-
+<?php debug(Yii::$app->params['menu']) ?>
     <?php foreach (Yii::$app->params['menu'] as $id=>$item): ?>
         <li><a href="<?= $item['url']?>"><i class="flaticon-shopping-cart-1"></i> <?= $item['title'] ?></a></li>
         <?php if(!empty($item['items'])): ?>

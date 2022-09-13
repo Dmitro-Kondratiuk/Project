@@ -165,6 +165,6 @@ class OrderController extends Controller
         $pages = new Pagination(['totalCount'=>$query->count(),'pageSize'=>10,'forcePageParam'=>false,
             'pageSizeParam'=> false]);
         $products = $query->offset($pages->offset)->limit($pages->limit)->all();
-        return $this->render('search',compact('products','query','pages','q'));
+        return $this->render('search',compact('products','q'));
     }
 }

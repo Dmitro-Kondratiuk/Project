@@ -52,7 +52,7 @@ $('.theme-btn').on('click', function() {
 function clearCart() {
 	$.ajax({
 		url: '/web/ru/cart/clear',
-		type: 'GET',
+		type: 'DELETE',
 		success: function (res) {
 			if (!res) alert('Ошибка');
 			showCart(res);
@@ -68,7 +68,7 @@ $(window).on('load', function () {
 	$('#preloader').delay(350).fadeOut('slow');
 	$('body').delay(350).css({ 'overflow': 'visible' });
 })
-// $('.catalog').dcAccordion();
+
 
 // meanmenu
 $('#mobile-menu').meanmenu({

@@ -53,15 +53,15 @@ $config = [
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-//            'transport' => [
-//                'class' => 'Swift_SmtpTransport',
-//                'host' => 'smtp.google.com',
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.freesmtpservers.com',
 //                'username' => 'kondratyuk.mitya@gmail.com',
 //                'password' => 'Proger5328',
-//                'port' => '465',
+                'port' => '25',
 //                'encryption' => 'ssl',
-//            ],
-            'useFileTransport' => true,
+            ],
+            'useFileTransport' => false,
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

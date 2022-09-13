@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="breadcrumb-text text-center">
-                        <h1>Category name : <?= $name->name?></h1>
+                        <h1><?=Yii::t('common','Имя категории') ?> : <?= $name->name?></h1>
                         <ul class="breadcrumb-menu">
                             <li><a href="<?= \yii\helpers\Url::home()?>">Home</a></li>
                             <li><span><?= $name->name?></span></li>

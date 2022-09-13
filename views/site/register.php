@@ -21,7 +21,7 @@
                     <div class="breadcrumb-text text-center">
                         <h1>Registration</h1>
                         <ul class="breadcrumb-menu">
-                            <li><a href="index.html">home</a></li>
+                            <li><a href="<?= \yii\helpers\Url::home()?>">Home</a></li>
                             <li><span>Registration</span></li>
                         </ul>
                     </div>
@@ -39,11 +39,11 @@
                     <div class="basic-login">
                         <h3 class="text-center mb-60">Signup From Here</h3>
                         <?php  $form = \yii\widgets\ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']])?>
-                            <?= $form->field($user,'username') ?>
-                            <?= $form->field($user,'password')->passwordInput() ?>
-                            <div class="mt-10"></div>
+                        <?= $form->field($user,'username') ?>
+                        <?= $form->field($user,'password')->passwordInput() ?>
+                        <div class="mt-10"></div>
                         <?= \yii\helpers\Html::submitButton('Зарегистрироваться', ['class' => 'btn btn-danger']) ?>
-                       <?php \yii\widgets\ActiveForm::end() ?>
+                        <?php \yii\widgets\ActiveForm::end() ?>
                     </div>
                 </div>
             </div>

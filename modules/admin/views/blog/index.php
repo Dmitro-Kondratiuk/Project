@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'description:ntext',
             //'small_content:ntext',
             [
-                'class' => ActionColumn::className(),
+                'class' => ActionColumn::class,
                 'urlCreator' => function ($action, \app\modules\admin\models\Blog $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }

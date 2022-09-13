@@ -25,14 +25,15 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
+    <a href="<?=str_replace('admin','',\yii\helpers\Url::home(true)).'/category/'.$model->id;?>">Посмотреть как это выглядит на сайте</a>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
             [
                     'attribute'=>'parent_id',
-                    'value'=> $model->category->name ?$model->category->name : "Самостоятельная категория",
+                    'value'=> $model->category->name ?$model->category->name : "<span class='text-danger'>Самостоятельная категория</span>",
+                    'format'=>'html'
             ],
             'name',
             'keywords',

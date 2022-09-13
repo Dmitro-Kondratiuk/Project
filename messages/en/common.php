@@ -46,7 +46,13 @@ return [
     'Имя'=>'Name',
     'E-mail'=>'E-mail',
     'Отзыв'=>'Review',
+    'Телефон'=>'Telephone',
+    'Адрес'=>'Address',
+    'Заполните пожалуйста форму для оформления заказа'=>'Please fill out the order form',
+    'Оформить заказ'=>'Checkout',
     'Коментарии'=>'Comments',
     'Добавить коменткарий'=>'Add comment',
-    'Оставить коментарий'=>'Leave a comment'
+    'Оставить коментарий'=>'Leave a comment',
+    'Категория'=>'Category',
+    'Имя категории'=>'Category name'
 ];

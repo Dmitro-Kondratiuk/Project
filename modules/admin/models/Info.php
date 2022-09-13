@@ -56,9 +56,10 @@ class Info extends \yii\db\ActiveRecord
     }
     public function beforeSave($insert)
     {
+
         if($file = UploadedFile::getInstance($this,'file')){
             $dir = "upload/user_logo/";
-            $this->image = $file->baseName.'_'.Yii::$app->getSecurity()->generateRandomString(6).'.'.$file->extension;
+            $this->image = $this->name.'_'.$this->last_name.'.'.$file->extension;
             $file->saveAs($dir.$this->image);
             return $file;
         }

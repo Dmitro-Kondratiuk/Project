@@ -25,7 +25,7 @@ use yii\helpers\Url;
                     <div class="breadcrumb-text text-center">
                         <h1><?= $products->category->name."->".$products->name ?></h1>
                         <ul class="breadcrumb-menu">
-                            <li><a href="<?= \yii\helpers\Url::home() ?>">Home</a></li>
+                            <li><a href="<?= \yii\helpers\Url::home() ?>"><?= Yii::t('common','На главную') ?></a></li>
                             <li><span>shop details</span></li>
                         </ul>
                     </div>

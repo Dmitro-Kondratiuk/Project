@@ -71,10 +71,10 @@ class Order extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'name' => 'Имя',
-            'email' => 'E-mail',
-            'phone' => 'Телефон',
-            'address' => 'Адрес',
+            'name' => Yii::t('common','Имя'),
+            'email' =>Yii::t('common','E-mail'),
+            'phone' => Yii::t('common','Телефон'),
+            'address' => Yii::t('common','Адрес'),
         ];
     }
 }

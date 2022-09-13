@@ -87,14 +87,14 @@ use yii\widgets\ActiveForm;
                         </div>
                     <div>
                         <br>
-                         <h2 class="text-center">Заволните пожалуйста форму для оформления заказа</h2>
+                         <h2 class="text-center"><?= Yii::t('common','Заполните пожалуйста форму для оформления заказа')?></h2>
                                     <?php $form = ActiveForm::begin() ?>
                                     <?= $form->field($order,'name') ?>
                                     <?= $form->field($order,'email') ?>
                                     <?= $form->field($order,'phone') ?>
                                     <?= $form->field($order,'address') ?>
                         <div class="text-center">
-                            <?= \yii\helpers\Html::submitButton('Оформить заказ', ['class' => 'btn btn-success']) ?>
+                            <?= \yii\helpers\Html::submitButton(Yii::t('common','Оформить заказ'), ['class' => 'btn btn-success']) ?>
                         </div>
                                     <?php \yii\widgets\ActiveForm::end()?>
                     </div>
